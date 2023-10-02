@@ -1,9 +1,9 @@
 # CSC207 Project - Email Validation & Verification System
 # Contributors:
-* [DaeChan Eom]((https://github.com/daechan0615))
-* [DongHyeon Kim]((https://github.com/hoooing))
-* [Victor Su]((https://github.com/VictorSu33))
-* [Justin Yoon]((https://github.com/justinyoon95))
+* [DaeChan Eom](https://github.com/daechan0615)
+* [DongHyeon Kim](https://github.com/hoooing)
+* [Victor Su](https://github.com/VictorSu33)
+* [Justin Yoon](https://github.com/justinyoon95)
   
 # About:
 This project is a directory focusing on a project domain based on an Email Validating System. We plan to develop an application for a system that validates and verifies an email. When a user registers or provides an email address, the system will check the validity of the email address to ensure that it belongs to the intended user. We will integrate a free Email Validation and verification API into our system. The API will be responsible for handling complex tasks such as checking email formats, domain validation, and verifying the existence of email addresses in real-time.
