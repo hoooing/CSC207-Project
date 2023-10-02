@@ -1,7 +1,15 @@
 # CSC207 Project - Email Validating System
-#Contributors
+# Contributors
+- DaeChan Eom
+- DongHyeon Kim
+- Victor Su
+- Justin Yoon
+  
 # About:
 This project is 
+
+
+
 
 
 Problem Domain Description: 
