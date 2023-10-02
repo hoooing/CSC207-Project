@@ -6,7 +6,7 @@ This project is hehe xdxd
 
 Problem Domain Description: 
 
-brief, high-level description of what kind of application your team is thinking of developing.:
+brief, high-level description of what kind of application your team is thinking of developing.: Email Validation
 
 a link to the documentation for an API:
 
