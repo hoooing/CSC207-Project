@@ -9,7 +9,7 @@
 This project is a directory focusing on a project domain based on an Email Validating System. We plan to develop ...
 
 # Screenshots:
-![screenshot1.png](screenshot1.png)
+![screenshot1.png](screenshot1.png) \\
 This is a screenshot of trying out the Email Validation API.
 
 
