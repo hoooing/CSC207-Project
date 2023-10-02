@@ -1,5 +1,5 @@
 # CSC207 Project - Email Validating System
-# Contributors
+# Contributors:
 - DaeChan Eom
 - DongHyeon Kim
 - Victor Su
@@ -8,9 +8,9 @@
 # About:
 This project is a directory focusing on a project domain based on an Email Validating System. We plan to develop ...
 
-#Screenshots
+# Screenshots:
 ![screenshot1.png](screenshot1.png)
-
+This is a screenshot of trying out the Email Validation API.
 
 
 Problem Domain Description: 
