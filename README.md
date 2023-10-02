@@ -18,5 +18,5 @@ This is a screenshot of trying out the Email Validation API.
 # Sample Output:
 
 # Technical Problems:
--We had no clue if we were allowed to install external packages.
+- We had no clue if we were allowed to install external packages.
 ![screenshot2](https://github.com/hoooing/CSC207-Project/assets/88988698/1f4c1a1c-78ea-4e26-ab00-c511d2b0cc77)
