@@ -1,6 +1,10 @@
-# CSC207-Project
+# CSC207 Project - ChittyChatty
 
-Problem Domain Description:
+# About:
+This project is hehe xdxd
+
+
+Problem Domain Description: 
 
 brief, high-level description of what kind of application your team is thinking of developing.:
 
