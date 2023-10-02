@@ -1,12 +1,12 @@
-# CSC207 Project - ChittyChatty
-
+# CSC207 Project - Email Validating System
+#Contributors
 # About:
-This project is hehe xdxd
+This project is 
 
 
 Problem Domain Description: 
 
-brief, high-level description of what kind of application your team is thinking of developing.: Email Validation
+brief, high-level description of what kind of application your team is thinking of developing.:
 
 a link to the documentation for an API:
 
