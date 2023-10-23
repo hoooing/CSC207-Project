@@ -1,4 +1,4 @@
-# CSC207 Project - Email Validation & Verification System
+# CSC207 Project - Chatting Application 
 # Contributors
 * [DaeChan Eom](https://github.com/daechan0615)
 * [DongHyeon Kim](https://github.com/hoooing)
