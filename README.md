@@ -1,4 +1,4 @@
-# CSC207 Project - End-to-End Encrypted Messanger Application 
+# CSC207 Project - End-to-End Encrypted Messanger
 # Contributors
 * [DaeChan Eom](https://github.com/daechan0615)
 * [DongHyeon Kim](https://github.com/hoooing)
