@@ -9,8 +9,7 @@
 Our project is to create an application providing an End-to-End Encrypted messaging service (including file sharing, and group chats), ensuring security and privacy by encrypting (converting data into a text format that is not immediately human-readable) the messages and can only be decrypted (reverses the encrypted data back to a readable format) by the recipient. This guarantees no one other than the parties in the chat has access to the messages in the chat, even the admins of the application. In summary, the fundamental idea is 'what is said in the room stays in the room'. 
 
 # API Documentation Link
-* [Twilio](https://www.twilio.com/docs/conversations)
-  Twilio is responsible for messaging capabilities for the application.
+* [Twilio](https://www.twilio.com/docs/conversations) : Twilio is responsible for messaging capabilities for the application.
 
 # Screenshots
 This is a screenshot of trying out the _____ API.
