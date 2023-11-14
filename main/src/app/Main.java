@@ -9,5 +9,7 @@ public class Main {
 
         JFrame application = new JFrame("Chat App Test");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        application.setVisible(true);
     }
 }
