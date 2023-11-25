@@ -7,5 +7,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../Packages/httpclient5-fluent/src/main/java" />
+          <root url="file://$MODULE_DIR$/../../Packages/httpclient5-fluent/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
