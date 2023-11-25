@@ -1,26 +1,23 @@
-# CSC207 Project - Email Validating System
-# Contributors:
-- DaeChan Eom
-- DongHyeon Kim
-- Victor Su
-- Justin Yoon
+# CSC207 Project - End-to-End Encrypted Messenger
+# Contributors
+* [DaeChan Eom](https://github.com/daechan0615)
+* [DongHyeon Kim](https://github.com/hoooing)
+* [Victor Su](https://github.com/VictorSu33)
+* [Justin Yoon](https://github.com/justinyoon95)
   
-# About:
-This project is a directory focusing on a project domain based on an Email Validating System. We plan to develop ...
+# About
+Our project is to create an application providing an End-to-End Encrypted messaging service (including file sharing, and group chats), ensuring security and privacy by encrypting (converting data into a text format that is not immediately human-readable) the messages and can only be decrypted (reverses the encrypted data back to a readable format) by the recipient. This guarantees no one other than the parties in the chat has access to the messages in the chat, even the application admins. In summary, the fundamental idea is 'what is said in the room stays in the room'. 
+# API Documentation Link
+* [Virgil E3Kit](https://developer.virgilsecurity.com/docs/e3kit): This API will be responsible for encryption methods.
 
-# Screenshots:
-![screenshot1.png](screenshot1.png) \\
-This is a screenshot of trying out the Email Validation API.
+# Sample Usage of the APIs
+This is a screenshot of trying out the Virgil E3Kit API.
 
+<img width="700" alt="encryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/cf30da34-4bfa-4011-909a-0bf70cba1258">
+(This is an example of encrypting data)
 
-Problem Domain Description: 
+<img width="700" alt="decryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/0d22d20f-0c63-492d-a334-62ca190502ce">
+(This is an example of decrypting data)
 
-brief, high-level description of what kind of application your team is thinking of developing.:
-
-a link to the documentation for an API:
-
-screenshot of using a tool to try out the API:
-
-example output of running your Java code:
-
-a list of any technical problems blocking progress :
+# Technical Problems
+TBA
