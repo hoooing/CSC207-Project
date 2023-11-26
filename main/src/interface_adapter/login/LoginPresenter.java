@@ -5,7 +5,6 @@ import interface_adapter.home.HomeViewModel;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.signup.SignupState;
 import use_case.login.LoginOutputData;
-import use_case.signup.SignupOutputBoundary;
 import use_case.signup.SignupOutputData;
 public class LoginPresenter {
     private final LoginViewModel loginViewModel;
