@@ -21,6 +21,7 @@ public class LoginPresenter {
 
     @Override
     public void prepareSuccessView(LoginOutputData response) {
+        // On success, switch to the home view.
         //  todo: Complete logged in Home page
 
         HomeState homeState = homeViewModel.getState();

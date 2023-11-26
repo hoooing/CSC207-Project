@@ -35,8 +35,7 @@ public class SignUpView {
     private final JButton cancel;
 
 
-    public SignupView(SignupController controller, SignupViewModel signupViewModel,
-                      ClearViewModel clearViewModel, ClearController clearController) {
+    public SignupView(SignupController controller, SignupViewModel signupViewModel) {
 
         this.signupController = controller;
         this.signupViewModel = signupViewModel;
