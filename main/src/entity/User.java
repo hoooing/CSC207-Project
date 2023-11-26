@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public interface User {
 
@@ -9,4 +10,8 @@ public interface User {
     String getUserPassword();
 
     LocalDateTime getCreationDate();
+
+    ArrayList<User> getFriends();
+
+    void addFriend();
 }

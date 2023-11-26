@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class CommonUser implements User {
 
@@ -8,10 +9,14 @@ public class CommonUser implements User {
     private final String password;
     private final LocalDateTime creationTime;
 
-    CommonUser(String userName, String password, LocalDateTime creationTime){
+    private ArrayList<User> friends;
+
+    CommonUser(String userName, String password, LocalDateTime creationTime, ArrayList<User> friends){
+        // todo: update userfactory
         this.userName = userName;
         this.password = password;
         this.creationTime = creationTime;
+        this.friends = friends;
     }
 
     @Override
@@ -22,4 +27,8 @@ public class CommonUser implements User {
 
     @Override
     public LocalDateTime getCreationDate() {return creationTime;}
+
+    public ArrayList<User> getFriends() {return friends;}
+
+    public void addFriend(User friend) {this.friends.add(friend);}
 }
