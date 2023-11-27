@@ -17,7 +17,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
-    //TODO: Complete link to signup page
 
     public final String viewName = "log in";
     private final LoginViewModel loginViewModel;
@@ -33,6 +32,8 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     //go to signup page
     final JButton signup;
+
+    final JButton close;
 
     private final LoginController loginController;
 
@@ -58,6 +59,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         buttons.add(logIn);
         signup = new JButton(loginViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signup);
+        close = new JButton(loginViewModel.CLOSE_BUTTON_LABEL);
 
         logIn.addActionListener(
                 new ActionListener() {
@@ -128,6 +130,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.add(buttons);
     }
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(close)) {
+            System.exit(0);
+        }
+    }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         LoginState state = (LoginState) evt.getNewValue();

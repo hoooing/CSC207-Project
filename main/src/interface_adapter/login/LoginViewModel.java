@@ -13,6 +13,8 @@ public class LoginViewModel extends ViewModel {
     public static final String LOGIN_BUTTON_LABEL = "Log In";
     public static final String SIGNUP_BUTTON_LABEL = "Sign Up";
 
+    public static final String CLOSE_BUTTON_LABEL = "Quit";
+
     private LoginState state = new LoginState();
 
     public LoginViewModel() {
