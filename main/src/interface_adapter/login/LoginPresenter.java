@@ -4,9 +4,10 @@ import interface_adapter.home.HomeState;
 import interface_adapter.home.HomeViewModel;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.signup.SignupState;
+import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginOutputData;
 import use_case.signup.SignupOutputData;
-public class LoginPresenter {
+public class LoginPresenter implements LoginOutputBoundary {
     private final LoginViewModel loginViewModel;
     private final HomeViewModel homeViewModel;
     private ViewManagerModel viewManagerModel;

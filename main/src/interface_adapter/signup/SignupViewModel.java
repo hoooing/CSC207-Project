@@ -5,7 +5,7 @@ import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class SignupViewModel {
+public class SignupViewModel extends ViewModel{
     public static final String TITLE_LABEL = "Sign Up View";
     public static final String USERNAME_LABEL = "Choose username";
     public static final String PASSWORD_LABEL = "Choose password";

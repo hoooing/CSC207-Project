@@ -4,6 +4,7 @@ import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupState;
+import interface_adapter.signup.SignupController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,7 +78,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(signup)) {
-                            signupController.execute();
+
                         }
                     }
                 }
