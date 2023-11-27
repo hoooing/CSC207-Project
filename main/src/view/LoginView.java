@@ -4,6 +4,8 @@ import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupState;
+import interface_adapter.signup.SignupController;
+import interface_adapter.switch_view.SwitchController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
-    //TODO: Complete link to signup page
 
     public final String viewName = "log in";
     private final LoginViewModel loginViewModel;
@@ -32,15 +33,18 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     //go to signup page
     final JButton signup;
 
+    final JButton close;
+
     private final LoginController loginController;
 
-    private final SignupController signupController;
+    private final SwitchController switchController;
 
-    public LoginView(LoginViewModel loginViewModel, LoginController controller) {
+    public LoginView(LoginViewModel loginViewModel, LoginController controller, SwitchController switchController) {
 
         this.loginController = controller;
         this.loginViewModel = loginViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
+        this.switchController = switchController;
 
         JLabel title = new JLabel("Account Login");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -55,6 +59,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         buttons.add(logIn);
         signup = new JButton(loginViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signup);
+        close = new JButton(loginViewModel.CLOSE_BUTTON_LABEL);
 
         logIn.addActionListener(
                 new ActionListener() {
@@ -72,12 +77,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         );
 
 
-        //todo: Finish signup action listener. Execute signup controller?
         signup.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(signup)) {
-                            signupController.execute();
+                            switchController.execute("signup");
                         }
                     }
                 }
@@ -126,6 +130,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.add(buttons);
     }
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(close)) {
+            System.exit(0);
+        }
+    }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         LoginState state = (LoginState) evt.getNewValue();

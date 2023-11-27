@@ -1,6 +1,6 @@
 package use_case.login;
 
-public class LoginOuputData {
+public class LoginOutputData {
     private final String username;
     private boolean useCaseFailed;
 

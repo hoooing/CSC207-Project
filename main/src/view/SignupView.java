@@ -3,6 +3,7 @@ package view;
 import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupState;
 import interface_adapter.signup.SignupViewModel;
+import interface_adapter.switch_view.SwitchController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,18 +14,13 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-
-public class SignUpView {
+public class SignupView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "sign up";
 
     private final SignupViewModel signupViewModel;
+
+    private final SwitchController switchController;
+
     private final JTextField usernameInputField = new JTextField(15);
     private final JPasswordField passwordInputField = new JPasswordField(15);
     private final JPasswordField repeatPasswordInputField = new JPasswordField(15);
@@ -35,11 +31,12 @@ public class SignUpView {
     private final JButton cancel;
 
 
-    public SignupView(SignupController controller, SignupViewModel signupViewModel,
-                      ClearViewModel clearViewModel, ClearController clearController) {
+    public SignupView(SignupController controller, SignupViewModel signupViewModel, SwitchController switchController) {
 
         this.signupController = controller;
         this.signupViewModel = signupViewModel;
+        this.switchController = switchController;
+
         signupViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(SignupViewModel.TITLE_LABEL);
@@ -155,6 +152,12 @@ public class SignUpView {
     /**
      * React to a button click that results in evt.
      */
+    // todo: switch to login
+    public void actionPerformed(ActionEvent evt) {
+        if (evt.getSource().equals(cancel)) {
+            switchController.execute("login");
+        }
+    }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
