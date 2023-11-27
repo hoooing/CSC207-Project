@@ -5,6 +5,7 @@ import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupState;
 import interface_adapter.signup.SignupController;
+import interface_adapter.switch_view.SwitchController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,13 +36,14 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     private final LoginController loginController;
 
-    private final SignupController signupController;
+    private final SwitchController switchController;
 
-    public LoginView(LoginViewModel loginViewModel, LoginController controller) {
+    public LoginView(LoginViewModel loginViewModel, LoginController controller, SwitchController switchController) {
 
         this.loginController = controller;
         this.loginViewModel = loginViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
+        this.switchController = switchController;
 
         JLabel title = new JLabel("Account Login");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -73,12 +75,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         );
 
 
-        //todo: Finish signup action listener. Execute signup controller?
         signup.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(signup)) {
-
+                            switchController.execute("signup");
                         }
                     }
                 }
