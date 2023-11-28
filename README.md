@@ -1,4 +1,4 @@
-# CSC207 Project - End-to-End Encrypted Messenger
+# CSC207 Project - N2NChat (End-to-End Encrypted Messenger)
 # Contributors
 * [DaeChan Eom](https://github.com/daechan0615)
 * [DongHyeon Kim](https://github.com/hoooing)
