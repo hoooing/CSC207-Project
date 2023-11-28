@@ -13,5 +13,5 @@ public interface User {
 
     ArrayList<User> getFriends();
 
-    void addFriend();
+    void addFriend(User friend);
 }
