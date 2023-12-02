@@ -7,11 +7,12 @@ public interface User {
 
     String getUserName();
 
-    String getUserPassword();
+    String getPassword();
 
     LocalDateTime getCreationDate();
 
     ArrayList<User> getFriends();
 
-    void addFriend();
+    void addFriend(User friend);
+
 }
