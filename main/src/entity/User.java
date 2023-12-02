@@ -7,7 +7,7 @@ public interface User {
 
     String getUserName();
 
-    String getUserPassword();
+    String getPassword();
 
     LocalDateTime getCreationDate();
 
