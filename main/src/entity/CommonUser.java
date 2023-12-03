@@ -27,8 +27,6 @@ public class CommonUser implements User {
         return password;
     }
 
-    @Override
-    public String getUserPassword() {return password;}
 
     @Override
     public LocalDateTime getCreationDate() {return creationTime;}
