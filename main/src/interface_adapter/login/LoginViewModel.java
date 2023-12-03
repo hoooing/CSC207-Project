@@ -6,7 +6,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class LoginViewModel extends ViewModel {
-    public final String TITLE_LABEL = "Login to Account"; //todo: add app name
+    public final String TITLE_LABEL = "E2E Chat Login"; //todo: add app name
     public final String USERNAME_LABEL = "Enter username";
     public final String PASSWORD_LABEL = "Enter password";
 
