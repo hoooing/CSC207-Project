@@ -12,8 +12,8 @@ public class SendMesageController {
         this.messageInteractor = messageInteractor;
     }
 
-    public void execute(String message, String chatID, String recipient, LocalDateTime timeStamp) {
-        MessageInputData inputData = new MessageInputData(message, chatID, recipient, timeStamp);
+    public void execute(String message, String chatID, String sender, LocalDateTime timeStamp) {
+        MessageInputData inputData = new MessageInputData(message, chatID, sender, timeStamp);
         messageInteractor.execute(inputData);
     }
 }
