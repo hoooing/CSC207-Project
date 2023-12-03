@@ -1,16 +1,30 @@
 package use_case.send_message;
 
+import java.time.LocalDateTime;
+
 public class MessageOutputData {
     private final String message;
 
-    private boolean useCaseFailed;
+    private final String sender;
 
-    public MessageOutputData(String message, Boolean useCaseFailed) {
+    private final LocalDateTime timeStamp;
+
+
+    public MessageOutputData(String message, String sender, LocalDateTime timeStamp) {
         this.message = message;
-        this.useCaseFailed = useCaseFailed;
+        this.sender = sender;
+        this.timeStamp = timeStamp;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
     }
 }

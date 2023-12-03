@@ -8,14 +8,14 @@ public class MessageInputData {
 
     String chatID;
 
-    String recipient;
+    String sender;
 
     LocalDateTime timeStamp;
 
-    public MessageInputData(String message, String chatID, String recipient, LocalDateTime timeStamp) {
+    public MessageInputData(String message, String chatID, String sender, LocalDateTime timeStamp) {
         this.message = message;
         this.chatID = chatID;
-        this.recipient = recipient;
+        this.sender = sender;
         this.timeStamp = timeStamp;
     }
 
@@ -23,8 +23,8 @@ public class MessageInputData {
 
     String getChatID(){return chatID;}
 
-    String getRecipient() {
-        return recipient;
+    String getSender() {
+        return sender;
     }
 
     LocalDateTime getTimeStamp() {
