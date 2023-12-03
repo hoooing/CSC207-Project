@@ -3,6 +3,7 @@ package app;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
+import interface_adapter.initial.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,13 +23,13 @@ public class Main {
         application.add(views);
 
         ViewManagerModel viewManagerModel = new ViewManagerModel();
-        new ViewManager(views, cardLayout, viewManagerModel);
+//        new ViewManager(views, cardLayout, viewManagerModel);
 
         InitialViewModel initialViewModel = new InitialViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
         LoginViewModel loginViewModel = new LoginViewModel();
-        ProfileSetUpViewModel profileSetUpViewModel = new ProfileSetUpViewModel();
-        MainViewModel mainViewModel = new MainViewModel();
+//        ProfileSetUpViewModel profileSetUpViewModel = new ProfileSetUpViewModel();
+//        MainViewModel mainViewModel = new MainViewModel();
 
         application.pack();
         application.setVisible(true);

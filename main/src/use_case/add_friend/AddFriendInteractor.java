@@ -3,26 +3,26 @@ package use_case.add_friend;
 import entity.CommonUser;
 import entity.User;
 
+import java.time.LocalDateTime;
+
 public class AddFriendInteractor implements AddFriendInputBoundary{
 
     final AddFriendUserDataAccessInterface userDataAccessInterface;
     final AddFriendOutputBoundary userPresenter;
     final User user;
-    final User userToAdd;
 
     public AddFriendInteractor(AddFriendUserDataAccessInterface AddFriendDataAccessInterface,
                                AddFriendOutputBoundary AddFriendOutputBoundary,
-                               User user, User userToAdd) {
+                               User user) {
         this.userDataAccessInterface = AddFriendDataAccessInterface;
         this.userPresenter = AddFriendOutputBoundary;
         this.user = user;
-        this.userToAdd = userToAdd;
     }
 
 
     @Override
     public void execute(AddFriendInputData addFriendInputData) {
-
+        User userToAdd = userDataAccessInterface.get(addFriendInputData.getFriendUsername());
         if (!userDataAccessInterface.existsByName(addFriendInputData.getFriendUsername())) {
             userPresenter.prepareFailView("User does not exist! Please check the Username!");
         } else if (user.getFriends().contains(userToAdd)){
@@ -30,10 +30,8 @@ public class AddFriendInteractor implements AddFriendInputBoundary{
         } else {
             user.addFriend(userToAdd);
 
-            AddFriendOutputData outputData = new AddFriendOutputData();
-            //TODO - Make an output for friend add success view.
+            AddFriendOutputData outputData = new AddFriendOutputData(true, LocalDateTime.now().toString(), userToAdd.getUserName());
             userPresenter.prepareSuccessView(outputData);
         }
-
     }
 }
