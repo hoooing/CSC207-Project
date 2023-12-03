@@ -35,5 +35,6 @@ public class CommonUser implements User {
 
     public ArrayList<User> getFriends() {return friends;}
 
+    @Override
     public void addFriend(User friend) {this.friends.add(friend);}
 }
