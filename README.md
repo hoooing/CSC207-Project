@@ -19,15 +19,15 @@ Base URL: 'https://random-word-api.herokuapp.com/' \
 Endpoint/Path: '/word' \
 Query Parameter: '?number=10' \
 __/all__ \
-Return all stored words. This will be a huge data dump and will take a long time to fetch and will probably slow down your application. \
+Return all stored words. \
 Example: https://random-word-api.herokuapp.com/all 
 
 __/word__ \
-Return one stored word randomly. Options can be further specified, see the parameters menu. \
+Return one stored word randomly. \
 Example: https://random-word-api.herokuapp.com/word
 
 __/languages__ \
-Return a list of stored language codes. Useful if you want a multilanguage app. See Github to find out how to add your own. \
+Return a list of stored language codes. \
 Example: https://random-word-api.herokuapp.com/languages
 
 # Sample Usage of the APIs
