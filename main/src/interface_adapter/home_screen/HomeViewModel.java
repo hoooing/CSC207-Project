@@ -1,28 +1,36 @@
 package interface_adapter.home_screen;
 
+import entity.Chat;
+import entity.User;
 import interface_adapter.ViewModel;
 
+import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public class HomeViewModel extends ViewModel {
     public final String TITLE_LABEL = "Your Chats";
-    public ArrayList<String> CHAT_BUTTON_LABELS;
 
     public static final String CLOSE_BUTTON_LABEL = "Quit";
 
+    public final String ADD_FRIEND_BUTTON_LABEL = "Add Friend";
+
     public final String LOGOUT_BUTTON_LABEL = "Logout";
 
-    private HomeState homeState = new HomeState();
+    private HomeState homeState;
 
-    public HomeViewModel(ArrayList<String> CHAT_LABELS) {
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+
+    public HomeViewModel() {
         super("home");
-        this.CHAT_BUTTON_LABELS = CHAT_LABELS;
+        Chat chat = new Chat("test1", "test1", new ArrayList<User>());
+        // code to test homeview
+        // todo: delete after complete
+        homeState = new HomeState();
+        homeState.addChat(chat);
     }
 
-    public void addChat(String chat) {
-        CHAT_BUTTON_LABELS.add(chat);
-    }
 
     public HomeState getState() {
         return homeState;
@@ -34,8 +42,7 @@ public class HomeViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        //todo:
-
+        support.firePropertyChange("state", null, this.homeState);
     }
 
     @Override

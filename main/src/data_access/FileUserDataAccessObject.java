@@ -47,7 +47,7 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
                     String password = String.valueOf(col[headers.get("Password")]);
                     String creationTimeText = String.valueOf(col[headers.get("Creation_Time")]);
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                    User user = userFactory.createUser(username, password, ldt, new ArrayList<>());
+                    User user = userFactory.createUser(username, password, ldt, new ArrayList<>(), new ArrayList<>());
                     accounts.put(username, user);
                 }
             }

@@ -1,9 +1,16 @@
 package app;
 
+import data_access.FileUserDataAccessObject;
+import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
-import interface_adapter.initial.*;
+import interface_adapter.switch_view.SwitchController;
+import view.HomeView;
+import view.LoginView;
+import view.SignupView;
+import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,15 +28,36 @@ public class Main {
         CardLayout cardLayout = new CardLayout();
         JPanel views = new JPanel(cardLayout);
         application.add(views);
+// temporary
+        FileUserDataAccessObject userDataAccessObject;
+        try {
+            userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         ViewManagerModel viewManagerModel = new ViewManagerModel();
-//        new ViewManager(views, cardLayout, viewManagerModel);
+        new ViewManager(views, cardLayout, viewManagerModel);
 
-        InitialViewModel initialViewModel = new InitialViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
         LoginViewModel loginViewModel = new LoginViewModel();
+        HomeViewModel homeViewModel = new HomeViewModel();
 //        ProfileSetUpViewModel profileSetUpViewModel = new ProfileSetUpViewModel();
 //        MainViewModel mainViewModel = new MainViewModel();
+
+        SwitchController switchController = SwitchUseCaseFactory.create(viewManagerModel, signupViewModel, loginViewModel);
+
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, homeViewModel, switchController, userDataAccessObject);
+        views.add(loginView, loginView.viewName);
+
+        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, switchController, userDataAccessObject );
+        views.add(signupView, signupView.viewName);
+
+        HomeView homeView = new HomeView(homeViewModel);
+        views.add(homeView, homeView.viewName);
+
+        viewManagerModel.setActiveView(homeView.viewName);
+        viewManagerModel.firePropertyChanged();
 
         application.pack();
         application.setVisible(true);

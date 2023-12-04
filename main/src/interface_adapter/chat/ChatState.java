@@ -16,6 +16,7 @@ public class ChatState {
         return participants;
     }
 
+
     public void setParticipants(ArrayList<String> participants) {
         this.participants = participants;
     }

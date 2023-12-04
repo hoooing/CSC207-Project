@@ -1,36 +1,35 @@
 package interface_adapter.login;
 
 import interface_adapter.home_screen.HomeState;
+import interface_adapter.home_screen.HomeStateBuilder;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.ViewManagerModel;
-import interface_adapter.home_screen.HomeViewModelBuilder;
 import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginOutputData;
 
 public class LoginPresenter implements LoginOutputBoundary {
     private final LoginViewModel loginViewModel;
 
-    private final HomeViewModelBuilder homeViewModelBuilder;
     private final HomeViewModel homeViewModel;
     private ViewManagerModel viewManagerModel;
 
     public LoginPresenter(ViewManagerModel viewManagerModel,
                           HomeViewModel homeViewModel,
-                          LoginViewModel loginViewModel, HomeViewModelBuilder homeViewModelBuilder) {
+                          LoginViewModel loginViewModel) {
         this.viewManagerModel = viewManagerModel;
-        this.homeViewModel = homeViewModel;
         this.loginViewModel = loginViewModel;
-        this.homeViewModelBuilder = homeViewModelBuilder;
+        this.homeViewModel = homeViewModel;
     }
-
     @Override
     public void prepareSuccessView(LoginOutputData user) {
         // On success, switch to the home view.
-        homeViewModelBuilder.build(user.getUser());
 
         HomeState homeState = homeViewModel.getState();
-        this.homeViewModel.setState(homeState);
-        this.homeViewModel.firePropertyChanged();
+        HomeStateBuilder homeStateBuilder = new HomeStateBuilder(homeState);
+        homeState.setUsername(user.getUser().getUserName());
+        homeStateBuilder.setChats(user.getUser().getChats());
+        homeViewModel.setState(homeState);
+        homeViewModel.firePropertyChanged();
 
         this.viewManagerModel.setActiveView(homeViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
