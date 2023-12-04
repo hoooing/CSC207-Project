@@ -32,7 +32,7 @@ public class HomeViewModel extends ViewModel {
         messages.add("Message 2" + "\n");
         messages.add("Message 3" + "\n");
 
-        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), messages);
+        Chat chat = new Chat("test1", "test1", new ArrayList<String>(), messages);
         homeState = new HomeState();
         homeState.addChat(chat);
     }

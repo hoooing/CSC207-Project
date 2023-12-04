@@ -1,8 +1,10 @@
 package view;
 
 import entity.Chat;
+import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatState;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.login.LoginState;
 import interface_adapter.send_message.SendMesageController;
 
@@ -41,10 +43,12 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final SendMesageController sendMesageController;
 
+
     public ChatView(ChatViewModel chatViewModel, SendMesageController sendMesageController) {
         this.chatViewModel =chatViewModel;
         this.sendMesageController = sendMesageController;
         this.chatViewModel.addPropertyChangeListener(this);
+
 
         top = new JPanel();
 
@@ -93,7 +97,6 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
         textArea.setLineWrap(true); // Enable line wrapping
         textArea.setWrapStyleWord(true); // Wrap at word boundaries
         textArea.setEditable(false);
-        textArea.setText("first message");
 
         // Create a JScrollPane and add the textArea to it
         texts = new JScrollPane(textArea);

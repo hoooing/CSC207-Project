@@ -8,19 +8,18 @@ public class AddFriendInteractor implements AddFriendInputBoundary{
 
     final AddFriendUserDataAccessInterface userDataAccessInterface;
     final AddFriendOutputBoundary userPresenter;
-    final User user;
+
 
     public AddFriendInteractor(AddFriendUserDataAccessInterface AddFriendDataAccessInterface,
-                               AddFriendOutputBoundary AddFriendOutputBoundary,
-                               User user) {
+                               AddFriendOutputBoundary AddFriendOutputBoundary) {
         this.userDataAccessInterface = AddFriendDataAccessInterface;
         this.userPresenter = AddFriendOutputBoundary;
-        this.user = user;
     }
 
 
     @Override
     public void execute(AddFriendInputData addFriendInputData) {
+        User user = userDataAccessInterface.get(addFriendInputData.getFriendUsername());
         if (!userDataAccessInterface.existsByName(addFriendInputData.getFriendUsername())) {
             userPresenter.prepareFailView("User does not exist! Please check the Username!");
         } else {
@@ -31,8 +30,8 @@ public class AddFriendInteractor implements AddFriendInputBoundary{
                 user.addFriend(userToAdd);
                 userToAdd.addFriend(user);
 
-                userDataAccessInterface.saveFriend(user,userToAdd);
-                userDataAccessInterface.saveFriend(userToAdd,user);
+                userDataAccessInterface.save(user);
+                userDataAccessInterface.save(userToAdd);
 
                 AddFriendOutputData outputData = new AddFriendOutputData(true, LocalDateTime.now().toString(), userToAdd.getUserName());
 

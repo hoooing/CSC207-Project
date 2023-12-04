@@ -4,8 +4,12 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatController;
 import interface_adapter.chat.ChatState;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.friend_manager.add_friend.AddFriendController;
+import interface_adapter.friend_manager.add_friend.AddFriendState;
+import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeState;
 import interface_adapter.home_screen.HomeViewModel;
+import interface_adapter.login.LoginState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,10 +46,17 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final ChatController chatController;
 
-    public HomeView(HomeViewModel homeViewModel,  ChatController chatController) {
+    private final AddFriendViewModel addFriendViewModel;
+
+    private final ViewManagerModel viewManagerModel;
+
+    public HomeView(HomeViewModel homeViewModel,  ChatController chatController, AddFriendViewModel addFriendViewModel,
+                    ViewManagerModel viewManagerModel) {
 
         this.homeViewModel = homeViewModel;
         this.chatController = chatController;
+        this.addFriendViewModel = addFriendViewModel;
+        this.viewManagerModel = viewManagerModel;
 
         JLabel title = new JLabel("Home");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -84,6 +95,21 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
         this.add(title);
         this.add(upperButtons);
         this.add(chats);
+
+        addFriend.addActionListener( new ActionListener(){
+                                         public void actionPerformed(ActionEvent evt) {
+                                             if (evt.getSource().equals(addFriend)) {
+                                                 HomeState currentState = homeViewModel.getState();
+                                                 String user = currentState.getUsername();
+                                                 AddFriendState state = addFriendViewModel.getState();
+                                                 state.setUsername(user);
+                                                 viewManagerModel.setActiveView(addFriendViewModel.getViewName());
+                                                 viewManagerModel.firePropertyChanged();
+
+                                             }
+                                         }
+                                     }
+        );
 
 
 

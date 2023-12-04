@@ -6,6 +6,7 @@ import entity.ChatFactory;
 import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
@@ -45,6 +46,7 @@ public class Main {
         LoginViewModel loginViewModel = new LoginViewModel();
         HomeViewModel homeViewModel = new HomeViewModel();
         ChatViewModel chatViewModel = new ChatViewModel();
+        AddFriendViewModel addFriendViewModel = new AddFriendViewModel();
 //        ProfileSetUpViewModel profileSetUpViewModel = new ProfileSetUpViewModel();
 //        MainViewModel mainViewModel = new MainViewModel();
 
@@ -56,11 +58,17 @@ public class Main {
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, switchController, userDataAccessObject );
         views.add(signupView, signupView.viewName);
 
-        HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessObject);
+        HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessObject
+        , addFriendViewModel);
         views.add(homeView, homeView.viewName);
 
         ChatView chatView = ChatUseCaseFactory.create(chatViewModel, chatDataAccessObject);
         views.add(chatView, chatView.viewName);
+
+        AddFriendView addFriendView = AddFriendUseCaseFactory.create(addFriendViewModel,
+                homeViewModel, viewManagerModel, userDataAccessObject);
+        views.add(addFriendView, addFriendView.viewName);
+
 
 
 // for testing views

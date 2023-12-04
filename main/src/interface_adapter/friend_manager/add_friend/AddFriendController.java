@@ -10,8 +10,8 @@ public class AddFriendController {
         this.userAddFriendUseCaseInteractor = userAddFriendUseCaseInteractor;
     }
 
-    public void execute(String friendName) {
-        AddFriendInputData data = new AddFriendInputData(friendName);
+    public void execute(String friendName, String username) {
+        AddFriendInputData data = new AddFriendInputData(friendName, username);
 
         userAddFriendUseCaseInteractor.execute(data);
     }

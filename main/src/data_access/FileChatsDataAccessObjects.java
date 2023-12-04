@@ -86,12 +86,23 @@ public class FileChatsDataAccessObjects implements ChatDataAccessInterface, Mess
     public Chat getChat(String chatID) {
         // code to test chatview
         // todo: delete after complete
-        Chat chat1 = new Chat("test1", "test1", new ArrayList<String>(), new ArrayList<String>());
-        return chat1;
+        return chats.get(chatID);
+    }
+
+    public void saveChat(Chat chat) {
+        chats.put(chat.getChatID(), chat);
+        this.save();
     }
 
     @Override
-    public boolean saveMessage(String message, String chatID, String sender, LocalDateTime timestamp) {
-        return true;
+    public boolean saveMessage(String message, String chatID) {
+        if (chats.containsKey(chatID)){
+            Chat chat = chats.get(chatID);
+            chat.addMessage(message);
+            this.save();
+            return true;
+        } else {
+            return false;
+        }
     }
 }

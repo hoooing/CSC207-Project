@@ -1,6 +1,7 @@
 package use_case.send_message;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class MessageInteractor implements MessageInputBoundary{
     final MessageDataAccessInterface messageDataAccessInterface;
@@ -17,10 +18,11 @@ public class MessageInteractor implements MessageInputBoundary{
         String message = messageInputData.getMessage();
         String sender = messageInputData.getSender();
         String chatId = messageInputData.getChatID();
-        LocalDateTime timeStamp = messageInputData.getTimeStamp();
-        if (messageDataAccessInterface.saveMessage(message, chatId, sender, timeStamp)) {
-            MessageOutputData messageOutputData = new MessageOutputData(message, sender, timeStamp);
-            messageOutputBoundary.prepareSuccessView(messageOutputData);
+        LocalDateTime timeStamp = messageInputData.getTimeStamp().truncatedTo(ChronoUnit.MINUTES);
+        String newMessage = message + "\n" + "Sent by " + sender + " at " +
+                timeStamp;
+        if (messageDataAccessInterface.saveMessage(newMessage, chatId)) {
+            messageOutputBoundary.prepareSuccessView(newMessage);
         }
         else {
             messageOutputBoundary.prepareFailView("Message not sent");

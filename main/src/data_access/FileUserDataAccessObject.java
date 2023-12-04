@@ -131,13 +131,12 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
         return accounts.containsKey(identifier);
     }
 
-    @Override
-    public boolean saveFriend(User user, User friend) {
-        return false;
-    }
 
     @Override
-    public void save(User user) { accounts.put(user.getUserName(), user); }
+    public void save(User user) {
+        accounts.put(user.getUserName(), user);
+        this.save();
+    }
 
     @Override
     public User get(String username) {

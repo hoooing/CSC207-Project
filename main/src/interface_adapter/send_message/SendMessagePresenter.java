@@ -18,15 +18,9 @@ public class SendMessagePresenter implements MessageOutputBoundary {
     }
 
     @Override
-    public void prepareSuccessView(MessageOutputData message) {
+    public void prepareSuccessView(String message) {
         ChatState chatState = chatViewModel.getState();
-        String text = message.getMessage();
-        String sender = message.getSender();
-        String timeStamp = message.getTimeStamp().truncatedTo(ChronoUnit.MINUTES).toString();
-
-        String newMessage = text + "\n" + "Sent by " + sender + " at " + timeStamp;
-        System.out.println("preparing success");
-        chatState.addMessage(newMessage);
+        chatState.addMessage(message);
         chatViewModel.firePropertyChanged();
 
     }

@@ -49,4 +49,6 @@ public class Chat {
     public void setMembers(ArrayList<String> members) {
         this.members = members;
     }
+
+    public void addMessage(String message) {this.chatHistory.add(message);}
 }

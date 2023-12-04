@@ -4,6 +4,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatController;
 import interface_adapter.chat.ChatPresenter;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.send_message.SendMesageController;
 import interface_adapter.send_message.SendMessagePresenter;
@@ -31,7 +32,7 @@ public class ChatUseCaseFactory {
             return new ChatView(chatViewModel, sendMesageController);
         } catch (IOException e) {
             //todo: update
-            JOptionPane.showMessageDialog(null, "Could not open user data file.");
+            JOptionPane.showMessageDialog(null, "Could not open chat data file.");
         }
 
         return null;

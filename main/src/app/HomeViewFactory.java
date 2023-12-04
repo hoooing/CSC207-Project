@@ -6,6 +6,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatController;
 import interface_adapter.chat.ChatPresenter;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginPresenter;
@@ -32,11 +33,13 @@ public class HomeViewFactory {
             HomeViewModel homeViewModel,
             ViewManagerModel viewManagerModel,
             ChatViewModel chatViewModel,
-            ChatDataAccessInterface chatDataAccessInterface) {
+            ChatDataAccessInterface chatDataAccessInterface,
+            AddFriendViewModel addFriendViewModel
+            ) {
 
         try {
-            ChatController chatController = createChatUseCase(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessInterface );
-            return new HomeView(homeViewModel, chatController);
+            ChatController chatController = createChatUseCase(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessInterface);
+            return new HomeView(homeViewModel, chatController, addFriendViewModel, viewManagerModel);
         } catch (IOException e) {
             //todo: update
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
