@@ -7,25 +7,27 @@ import java.util.ArrayList;
 public class ChatState {
     private String chatID = "";
 
+    private String chatName = "";
+
     private ArrayList<String> participants = new ArrayList<>();
     private String messageError = null;
 
     ArrayList<String> messages = new ArrayList<>();
 
-    public ArrayList<String> getParticipants() {
-        return participants;
+    public String getChatName() {
+        return chatName;
     }
 
-
-    public void setParticipants(ArrayList<String> participants) {
-        this.participants = participants;
+    public void setChatName(String chatName) {
+        this.chatName = chatName;
     }
 
     public ChatState(ChatState copy) {
-        chatID = copy.chatID;
-        messageError = copy.messageError;
-        messages = copy.messages;
-        participants = copy.participants;
+        this.chatID = copy.chatID;
+        this.messageError = copy.messageError;
+        this.messages = copy.messages;
+        this.participants = copy.participants;
+        this.chatName = copy.chatName;
     }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
@@ -56,4 +58,16 @@ public class ChatState {
     }
 
     public void addParticipant(String participant) {this.participants.add(participant);}
+
+    public ArrayList<String> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(ArrayList<String> participants) {
+        this.participants = participants;
+    }
+
+    public void setMessages(ArrayList<String> messages) {
+        this.messages = messages;
+    }
 }

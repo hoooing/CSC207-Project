@@ -9,10 +9,21 @@ public class Chat {
 
     private ArrayList<User> members;
 
-    public Chat(String chatID, String chatName, ArrayList<User> members) {
+    private ArrayList<String> chatHistory;
+
+    public ArrayList<String> getChatHistory() {
+        return chatHistory;
+    }
+
+    public void setChatHistory(ArrayList<String> chatHistory) {
+        this.chatHistory = chatHistory;
+    }
+
+    public Chat(String chatID, String chatName, ArrayList<User> members, ArrayList<String> chatHistory) {
         this.chatID = chatID;
         this.chatName = chatName;
         this.members = members;
+        this.chatHistory = chatHistory;
     }
 
     public String getChatID() {

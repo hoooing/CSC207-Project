@@ -3,6 +3,7 @@ package app;
 import data_access.FileUserDataAccessObject;
 import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.chat.ChatViewModel;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
@@ -42,6 +43,7 @@ public class Main {
         SignupViewModel signupViewModel = new SignupViewModel();
         LoginViewModel loginViewModel = new LoginViewModel();
         HomeViewModel homeViewModel = new HomeViewModel();
+        ChatViewModel chatViewModel = new ChatViewModel();
 //        ProfileSetUpViewModel profileSetUpViewModel = new ProfileSetUpViewModel();
 //        MainViewModel mainViewModel = new MainViewModel();
 
@@ -53,7 +55,7 @@ public class Main {
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, switchController, userDataAccessObject );
         views.add(signupView, signupView.viewName);
 
-        HomeView homeView = new HomeView(homeViewModel);
+        HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, userDataAccessObject);
         views.add(homeView, homeView.viewName);
 
         viewManagerModel.setActiveView(homeView.viewName);

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class GroupChat extends Chat{
     private ArrayList<User> admins;
 
-    public GroupChat(String chatID, String chatName, ArrayList<User> members, ArrayList<User> admins) {
-        super(chatID, chatName, members);
+    public GroupChat(String chatID, String chatName, ArrayList<User> members, ArrayList<String> chatHistory, ArrayList<User> admins) {
+        super(chatID, chatName, members, chatHistory);
         this.admins = admins;
     }
 
