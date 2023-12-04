@@ -13,6 +13,8 @@ public class HomeViewModel extends ViewModel {
 
     public static final String CLOSE_BUTTON_LABEL = "Quit";
 
+    public static final String NEW_MESSAGE_BUTTON_LABEL = "New Messages";
+
     public final String ADD_FRIEND_BUTTON_LABEL = "Add Friend";
 
     public final String LOGOUT_BUTTON_LABEL = "Logout";
@@ -24,9 +26,9 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         super("home");
-        Chat chat = new Chat("test1", "test1", new ArrayList<User>());
         // code to test homeview
         // todo: delete after complete
+        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), new ArrayList<String>());
         homeState = new HomeState();
         homeState.addChat(chat);
     }

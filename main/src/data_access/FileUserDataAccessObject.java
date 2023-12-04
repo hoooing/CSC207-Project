@@ -1,8 +1,10 @@
 package data_access;
 
+import entity.Chat;
 import entity.User;
 import entity.UserFactory;
 import use_case.add_friend.AddFriendUserDataAccessInterface;
+import use_case.chat.ChatDataAccessInterface;
 import use_case.delete_friend.DeleteFriendUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
@@ -15,7 +17,7 @@ import java.util.Map;
 
 public class FileUserDataAccessObject implements AddFriendUserDataAccessInterface,
         DeleteFriendUserDataAccessInterface, LoginUserDataAccessInterface,
-        SignupUserDataAccessInterface {
+        SignupUserDataAccessInterface, ChatDataAccessInterface {
 
     private final File csvUserFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -86,5 +88,10 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
     @Override
     public User get(String username) {
         return accounts.get(username);
+    }
+
+    @Override
+    public Chat getChat(String chatID) {
+        return null;
     }
 }

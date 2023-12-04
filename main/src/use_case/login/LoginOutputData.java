@@ -6,6 +6,7 @@ public class LoginOutputData {
     private boolean useCaseFailed;
 
     public LoginOutputData(User user, boolean useCaseFailed) {
+        // todo: implement failed use case
         this.user = user;
         this.useCaseFailed = useCaseFailed;
     }

@@ -32,13 +32,6 @@ public class HomeState {
         chats.add(chatPair);
     }
 
-    public ArrayList<String> getChatNames() {
-        ArrayList<String> chatNames = new ArrayList<>();
-        for (String[] chat: chats) {
-            chatNames.add(chat[1]);
-        }
-        return chatNames;
-    }
 
     public ArrayList<String[]> getChats() {
         return chats;
