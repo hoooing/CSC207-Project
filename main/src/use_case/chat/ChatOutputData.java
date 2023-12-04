@@ -14,11 +14,14 @@ public class ChatOutputData {
 
     private ArrayList<String> chatHistory;
 
-    public ChatOutputData(String chatID, String chatName, ArrayList<String> members, ArrayList<String> chatHistory) {
+    private String username;
+
+    public ChatOutputData(String chatID, String chatName, ArrayList<String> members, ArrayList<String> chatHistory, String username) {
         this.chatID = chatID;
         this.chatName = chatName;
         this.members = members;
         this.chatHistory = chatHistory;
+        this.username = username;
     }
 
     public String getChatID() {
@@ -35,5 +38,9 @@ public class ChatOutputData {
 
     public ArrayList<String> getChatHistory() {
         return chatHistory;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

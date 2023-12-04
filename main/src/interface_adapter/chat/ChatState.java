@@ -12,6 +12,8 @@ public class ChatState {
     private ArrayList<String> participants = new ArrayList<>();
     private String messageError = null;
 
+    private String username = "";
+
     ArrayList<String> messages = new ArrayList<>();
 
     public String getChatName() {
@@ -28,6 +30,7 @@ public class ChatState {
         this.messages = copy.messages;
         this.participants = copy.participants;
         this.chatName = copy.chatName;
+        this.username = copy.username;
     }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
@@ -69,5 +72,14 @@ public class ChatState {
 
     public void setMessages(ArrayList<String> messages) {
         this.messages = messages;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

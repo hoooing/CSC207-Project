@@ -16,12 +16,9 @@ public class ChatInteractor implements ChatInputBoundary {
         this.chatDataAccessInterface = chatDataAccessInterface;
     }
 
-    public void execute(String chatName, String chatID) {
+    public void execute(String chatName, String chatID, String username) {
 
-        //Chat chat = chatDataAccessInterface.getChat(chatID);
-        // code to test chatview
-        // todo: delete after complete
-        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), new ArrayList<String>());
+        Chat chat = chatDataAccessInterface.getChat(chatID);
 
         String name = chat.getChatName();
         String id = chat.getChatID();
@@ -31,7 +28,7 @@ public class ChatInteractor implements ChatInputBoundary {
         }
         ArrayList<String> messages = chat.getChatHistory();
 
-        ChatOutputData chatOutputData = new ChatOutputData(name, id, members, messages);
+        ChatOutputData chatOutputData = new ChatOutputData(name, id, members, messages, username);
         chatPresenter.prepareView(chatOutputData);
     }
 }

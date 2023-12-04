@@ -29,6 +29,7 @@ public class ChatPresenter implements ChatOutputBoundary {
         String chatID = chatOutputData.getChatID();
         ArrayList<String> participants = chatOutputData.getMembers();
         ArrayList<String> messageHistory = chatOutputData.getChatHistory();
+        String username = chatOutputData.getUsername();
 
 
         ChatState curentState = chatViewModel.getState();
@@ -36,6 +37,7 @@ public class ChatPresenter implements ChatOutputBoundary {
         curentState.setChatID(chatID);
         curentState.setParticipants(participants);
         curentState.setMessages(messageHistory);
+        curentState.setUsername(username);
 
         chatViewModel.setState(curentState);
         // todo: is this necessary?
