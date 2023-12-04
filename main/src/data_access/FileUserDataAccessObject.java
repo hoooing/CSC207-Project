@@ -7,6 +7,7 @@ import use_case.add_friend.AddFriendUserDataAccessInterface;
 import use_case.chat.ChatDataAccessInterface;
 import use_case.delete_friend.DeleteFriendUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
+import use_case.send_message.MessageDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 
 import java.io.*;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class FileUserDataAccessObject implements AddFriendUserDataAccessInterface,
         DeleteFriendUserDataAccessInterface, LoginUserDataAccessInterface,
-        SignupUserDataAccessInterface, ChatDataAccessInterface {
+        SignupUserDataAccessInterface, ChatDataAccessInterface, MessageDataAccessInterface {
 
     private final File csvUserFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -92,6 +93,14 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
 
     @Override
     public Chat getChat(String chatID) {
-        return null;
+        // code to test chatview
+        // todo: delete after complete
+        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), new ArrayList<String>());
+        return chat;
+    }
+
+    @Override
+    public boolean saveMessage(String message, String chatID, String sender, LocalDateTime timestamp) {
+        return true;
     }
 }

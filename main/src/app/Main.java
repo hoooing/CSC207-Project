@@ -8,10 +8,7 @@ import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
 import interface_adapter.switch_view.SwitchController;
-import view.HomeView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,6 +55,11 @@ public class Main {
         HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, userDataAccessObject);
         views.add(homeView, homeView.viewName);
 
+        ChatView chatView = ChatUseCaseFactory.create(chatViewModel, userDataAccessObject);
+        views.add(chatView, chatView.viewName);
+
+
+// for testing views
         viewManagerModel.setActiveView(homeView.viewName);
         viewManagerModel.firePropertyChanged();
 

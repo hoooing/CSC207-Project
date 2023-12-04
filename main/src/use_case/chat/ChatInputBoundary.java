@@ -1,5 +1,5 @@
 package use_case.chat;
 
 public interface ChatInputBoundary {
-    public void execute(String chatName, String chatID);
+    public void execute(String chatName, String chatID, String username);
 }

@@ -9,7 +9,6 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public class HomeViewModel extends ViewModel {
-    public final String TITLE_LABEL = "Your Chats";
 
     public static final String CLOSE_BUTTON_LABEL = "Quit";
 
@@ -28,7 +27,12 @@ public class HomeViewModel extends ViewModel {
         super("home");
         // code to test homeview
         // todo: delete after complete
-        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), new ArrayList<String>());
+        ArrayList<String> messages = new ArrayList<>();
+        messages.add("Message 1" + "\n");
+        messages.add("Message 2" + "\n");
+        messages.add("Message 3" + "\n");
+
+        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), messages);
         homeState = new HomeState();
         homeState.addChat(chat);
     }
@@ -49,6 +53,6 @@ public class HomeViewModel extends ViewModel {
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-        //todo:
+        support.addPropertyChangeListener(listener);
     }
 }

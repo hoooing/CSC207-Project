@@ -9,7 +9,7 @@ public class ChatController {
         this.chatInteractor = chatInteractor;
     }
 
-    public void execute(String chatName, String chatID) {
-        chatInteractor.execute(chatName, chatID);
+    public void execute(String chatName, String chatID, String userName) {
+        chatInteractor.execute(chatName, chatID, userName);
     }
 }

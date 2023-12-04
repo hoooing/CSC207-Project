@@ -4,6 +4,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatController;
 import interface_adapter.chat.ChatState;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.home_screen.HomeState;
 import interface_adapter.home_screen.HomeViewModel;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 public class HomeView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    public final String viewName = "home view";
+    public final String viewName = "home";
 
     private JLabel title;
 
@@ -32,28 +33,29 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     private JButton newMessages;
 
+    private JPanel chatButtonPanel;
+
     private Map<JButton, String> buttonLog = new HashMap<>();
 
     private final HomeViewModel homeViewModel;
 
-    private final ViewManagerModel viewManagerModel;
 
     private final ChatController chatController;
 
-    public HomeView(HomeViewModel homeViewModel, ViewManagerModel viewManagerModel, ChatController chatController) {
+    public HomeView(HomeViewModel homeViewModel,  ChatController chatController) {
 
         this.homeViewModel = homeViewModel;
-        this.viewManagerModel = viewManagerModel;
         this.chatController = chatController;
 
         JLabel title = new JLabel("Home");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font(null, Font.BOLD, 15));
 
-        JPanel chatButtonPanel = new JPanel();
+        chatButtonPanel = new JPanel();
         chatButtonPanel.setLayout(new BoxLayout(chatButtonPanel, BoxLayout.Y_AXIS));
 
         // Add buttons to the panel (you can replace this loop with your logic to create buttons dynamically)
+        // todo: delete after testing
         ArrayList<String[]> toAdd = homeViewModel.getState().getChats();
         for (String[] chatPair: toAdd) {
             JButton button = new JButton(chatPair[1]);
@@ -63,8 +65,7 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
             buttonLog.put(button, chatPair[0]);
         }
 
-        // Add upper buttons
-        //todo: add action listeners
+        //todo: add rest of action listeners
         JPanel upperButtons = new JPanel();
         close = new JButton(homeViewModel.CLOSE_BUTTON_LABEL);
         logout = new JButton(homeViewModel.LOGOUT_BUTTON_LABEL);
@@ -90,10 +91,9 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
     private class ButtonClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(chats, "clicked");
             String chatName = e.getActionCommand();
             String chatId = buttonLog.get(e);
-            chatController.execute(chatName, chatId);
+            chatController.execute(chatName, chatId, homeViewModel.getState().getUsername());
         }
     }
     @Override
@@ -103,7 +103,15 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        HomeState state = (HomeState) evt.getNewValue();
+        ArrayList<String[]> toAdd = homeViewModel.getState().getChats();
+        for (String[] chatPair: toAdd) {
+            JButton button = new JButton(chatPair[1]);
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
+            button.addActionListener(new ButtonClickListener());
+            chatButtonPanel.add(button);
+            buttonLog.put(button, chatPair[0]);
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import use_case.send_message.MessageOutputBoundary;
 import use_case.send_message.MessageOutputData;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class SendMessagePresenter implements MessageOutputBoundary {
     private final ChatViewModel chatViewModel;
@@ -21,9 +22,10 @@ public class SendMessagePresenter implements MessageOutputBoundary {
         ChatState chatState = chatViewModel.getState();
         String text = message.getMessage();
         String sender = message.getSender();
-        String timeStamp = message.getTimeStamp().toString();
+        String timeStamp = message.getTimeStamp().truncatedTo(ChronoUnit.MINUTES).toString();
 
         String newMessage = text + "\n" + "Sent by " + sender + " at " + timeStamp;
+        System.out.println("preparing success");
         chatState.addMessage(newMessage);
         chatViewModel.firePropertyChanged();
 

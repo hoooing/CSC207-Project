@@ -1,8 +1,6 @@
 package interface_adapter.chat;
 
-import entity.Chat;
 import interface_adapter.ViewModel;
-import interface_adapter.home_screen.HomeState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,14 +9,19 @@ public class ChatViewModel extends ViewModel {
 
     public final String MESSAGE_BAR = "message...";
 
+    public final String RETURN = "return";
 
-    public ChatState chatState = new ChatState();
+    public final String SEND = "send";
+
+
+    public ChatState chatState;
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
 
     public ChatViewModel() {
         super("chat");
+        this.chatState = new ChatState();
     }
 
     public ChatState getState() {
