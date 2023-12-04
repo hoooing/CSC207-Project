@@ -14,6 +14,11 @@ Our project is to create an application providing an End-to-End Encrypted messag
 * [Virgil E3Kit](https://developer.virgilsecurity.com/docs/e3kit): This API will be responsible for encryption/decryption methods.
 * [Random word API](https://random-word-api.herokuapp.com/home): This API will be responsible for giving random words to generate recovery phrase.
 
+Endpoint for Random word API: https://random-word-api.herokuapp.com/word?number=10
+Base URL: https://random-word-api.herokuapp.com/
+Endpoint/Path: /word
+Query Parameter: ?number=10
+
 # Sample Usage of the APIs
 This is a screenshot of trying out the Virgil E3Kit API.
 
