@@ -7,7 +7,7 @@ public class Chat {
 
     private String chatName;
 
-    private ArrayList<User> members;
+    private ArrayList<String> members;
 
     private ArrayList<String> chatHistory;
 
@@ -19,7 +19,7 @@ public class Chat {
         this.chatHistory = chatHistory;
     }
 
-    public Chat(String chatID, String chatName, ArrayList<User> members, ArrayList<String> chatHistory) {
+    public Chat(String chatID, String chatName, ArrayList<String> members, ArrayList<String> chatHistory) {
         this.chatID = chatID;
         this.chatName = chatName;
         this.members = members;
@@ -42,11 +42,11 @@ public class Chat {
         this.chatName = chatName;
     }
 
-    public ArrayList<User> getMembers() {
+    public ArrayList<String> getMembers() {
         return members;
     }
 
-    public void setMembers(ArrayList<User> members) {
+    public void setMembers(ArrayList<String> members) {
         this.members = members;
     }
 }

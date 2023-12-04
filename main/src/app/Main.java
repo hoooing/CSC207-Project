@@ -1,6 +1,8 @@
 package app;
 
+import data_access.FileChatsDataAccessObjects;
 import data_access.FileUserDataAccessObject;
+import entity.ChatFactory;
 import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatViewModel;
@@ -28,8 +30,10 @@ public class Main {
         application.add(views);
 // temporary
         FileUserDataAccessObject userDataAccessObject;
+        FileChatsDataAccessObjects chatDataAccessObject;
         try {
-            userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
+            chatDataAccessObject = new FileChatsDataAccessObjects("./chats.csv", new ChatFactory());
+            userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory(), new ChatFactory(), chatDataAccessObject);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -52,10 +56,10 @@ public class Main {
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, switchController, userDataAccessObject );
         views.add(signupView, signupView.viewName);
 
-        HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, userDataAccessObject);
+        HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessObject);
         views.add(homeView, homeView.viewName);
 
-        ChatView chatView = ChatUseCaseFactory.create(chatViewModel, userDataAccessObject);
+        ChatView chatView = ChatUseCaseFactory.create(chatViewModel, chatDataAccessObject);
         views.add(chatView, chatView.viewName);
 
 

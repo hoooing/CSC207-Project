@@ -1,6 +1,7 @@
 package data_access;
 
 import entity.Chat;
+import entity.ChatFactory;
 import entity.User;
 import entity.UserFactory;
 import use_case.friend_manager.add_friend.AddFriendUserDataAccessInterface;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class FileUserDataAccessObject implements AddFriendUserDataAccessInterface,
         DeleteFriendUserDataAccessInterface, LoginUserDataAccessInterface,
-        SignupUserDataAccessInterface, ChatDataAccessInterface, MessageDataAccessInterface {
+        SignupUserDataAccessInterface {
 
     private final File csvUserFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -27,14 +28,23 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
 
     private UserFactory userFactory;
 
+    private ChatFactory chatFactory;
 
-    public FileUserDataAccessObject(String csvPath, UserFactory userFactory) throws IOException {
+    private FileChatsDataAccessObjects chatsDataAccessObjects;
+
+
+    public FileUserDataAccessObject(String csvPath, UserFactory userFactory,
+                                    ChatFactory chatFactory,
+                                    FileChatsDataAccessObjects chatsDataAccessObjects) throws IOException {
         csvUserFile = new File(csvPath);
         this.userFactory = userFactory;
+        this.chatFactory = chatFactory;
+        this.chatsDataAccessObjects = chatsDataAccessObjects;
         headers.put("Username", 0);
         headers.put("Password", 1);
         headers.put("Creation_Time", 2);
         headers.put("Friends", 3);
+        headers.put("Chats", 4);
 
         if (csvUserFile.length() == 0) {
             this.save();
@@ -43,7 +53,7 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
                 String header = reader.readLine();
 
                 // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("Username,Password,Creation_Time,Friends");
+                assert header.equals("Username,Password,Creation_Time,Friends, Chats");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
@@ -53,8 +63,22 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
                     String creationTimeText = String.valueOf(col[headers.get("Creation_Time")]);
                     //TODO - Figure out friend system.
                     String[] listFriends = col[headers.get("Friends")].split("/");
+                    String[] chatIDs = col[headers.get("Chats")].split("/");
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                    User user = userFactory.createUser(username, password, ldt, new ArrayList<>(), new ArrayList<>());
+                    ArrayList<User> friends = new ArrayList<>();
+                    for (String friendName: listFriends) {
+                        User friend = this.get(friendName);
+                        friends.add(friend);
+                    }
+
+                    ArrayList<Chat> chats = new ArrayList<>();
+
+                    for (String chatID: chatIDs) {
+                        Chat chat = chatsDataAccessObjects.getChat(chatID);
+                        chats.add(chat);
+                    }
+
+                    User user = userFactory.createUser(username, password, ldt, friends, chats);
                     accounts.put(username, user);
                 }
             }
@@ -69,10 +93,28 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
             writer.newLine();
 
             for (User user : accounts.values()) {
+                ArrayList<String> friends = new ArrayList<>();
+                for (User friend: user.getFriends()) {
+                    friends.add(friend.getUserName());
+                }
+
+                String listFriend = String.join("/", friends);
+                /*
                 String listFriend = user.getFriends().stream().map(Object::toString)
                         .collect(Collectors.joining("/"));
-                String line = String.format("%s,%s,%s,%s",
-                        user.getUserName(), user.getUserName(), user.getCreationDate(), listFriend);
+
+
+                 */
+
+                ArrayList<String> chats = new ArrayList<>();
+                for (Chat chat: user.getChats()) {
+                    chats.add(chat.getChatID());
+                }
+
+                String listChat = String.join("/", chats);
+
+                String line = String.format("%s,%s,%s,%s,%s",
+                        user.getUserName(), user.getUserName(), user.getCreationDate().toString(), listFriend, listChat);
                 writer.write(line);
                 writer.newLine();
             }
@@ -90,6 +132,11 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
     }
 
     @Override
+    public boolean saveFriend(User user, User friend) {
+        return false;
+    }
+
+    @Override
     public void save(User user) { accounts.put(user.getUserName(), user); }
 
     @Override
@@ -97,16 +144,5 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
         return accounts.get(username);
     }
 
-    @Override
-    public Chat getChat(String chatID) {
-        // code to test chatview
-        // todo: delete after complete
-        Chat chat = new Chat("test1", "test1", new ArrayList<User>(), new ArrayList<String>());
-        return chat;
-    }
 
-    @Override
-    public boolean saveMessage(String message, String chatID, String sender, LocalDateTime timestamp) {
-        return true;
-    }
 }

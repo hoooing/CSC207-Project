@@ -8,4 +8,6 @@ public interface AddFriendUserDataAccessInterface {
 
     boolean existsByName(String identifier);
 
+    boolean saveFriend(User user, User friend);
+
 }

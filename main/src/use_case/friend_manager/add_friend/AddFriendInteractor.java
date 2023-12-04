@@ -21,16 +21,23 @@ public class AddFriendInteractor implements AddFriendInputBoundary{
 
     @Override
     public void execute(AddFriendInputData addFriendInputData) {
-        User userToAdd = userDataAccessInterface.get(addFriendInputData.getFriendUsername());
         if (!userDataAccessInterface.existsByName(addFriendInputData.getFriendUsername())) {
             userPresenter.prepareFailView("User does not exist! Please check the Username!");
-        } else if (user.getFriends().contains(userToAdd)){
-            userPresenter.prepareFailView("User already exists in your friend list!");
         } else {
-            user.addFriend(userToAdd);
+            User userToAdd = userDataAccessInterface.get(addFriendInputData.getFriendUsername());
+            if (user.getFriends().contains(userToAdd)){
+                userPresenter.prepareFailView("User already exists in your friend list!");
+            } else {
+                user.addFriend(userToAdd);
+                userToAdd.addFriend(user);
 
-            AddFriendOutputData outputData = new AddFriendOutputData(true, LocalDateTime.now().toString(), userToAdd.getUserName());
-            userPresenter.prepareSuccessView(outputData);
+                userDataAccessInterface.saveFriend(user,userToAdd);
+                userDataAccessInterface.saveFriend(userToAdd,user);
+
+                AddFriendOutputData outputData = new AddFriendOutputData(true, LocalDateTime.now().toString(), userToAdd.getUserName());
+
+                userPresenter.prepareSuccessView(outputData);
+            }
         }
     }
 }
