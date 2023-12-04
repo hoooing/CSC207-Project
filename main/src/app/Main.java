@@ -6,6 +6,7 @@ import entity.ChatFactory;
 import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.chat.ChatViewModel;
+import interface_adapter.create_chat.CreateChatController;
 import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginViewModel;
@@ -52,6 +53,8 @@ public class Main {
 
         SwitchController switchController = SwitchUseCaseFactory.create(viewManagerModel, signupViewModel, loginViewModel);
 
+        CreateChatController createChatController = CreateChatControllerFactory.create(userDataAccessObject, chatDataAccessObject);
+
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, homeViewModel, switchController, userDataAccessObject);
         views.add(loginView, loginView.viewName);
 
@@ -66,7 +69,7 @@ public class Main {
         views.add(chatView, chatView.viewName);
 
         AddFriendView addFriendView = AddFriendUseCaseFactory.create(addFriendViewModel,
-                homeViewModel, viewManagerModel, userDataAccessObject);
+                homeViewModel, viewManagerModel, userDataAccessObject, createChatController);
         views.add(addFriendView, addFriendView.viewName);
 
 

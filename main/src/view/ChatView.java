@@ -120,7 +120,6 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
 
     public void addMessages(ChatState state) {
         StringBuilder stringBuilder = new StringBuilder();
-        System.out.println("adding new message");
         for (String message: state.getMessages()) {
             stringBuilder.append(message).append("\n");
         }

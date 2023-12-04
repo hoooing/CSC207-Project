@@ -25,16 +25,6 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         super("home");
-        // code to test homeview
-        // todo: delete after complete
-        ArrayList<String> messages = new ArrayList<>();
-        messages.add("Message 1" + "\n");
-        messages.add("Message 2" + "\n");
-        messages.add("Message 3" + "\n");
-
-        Chat chat = new Chat("test1", "test1", new ArrayList<String>(), messages);
-        homeState = new HomeState();
-        homeState.addChat(chat);
     }
 
 

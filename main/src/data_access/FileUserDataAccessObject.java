@@ -4,6 +4,7 @@ import entity.Chat;
 import entity.ChatFactory;
 import entity.User;
 import entity.UserFactory;
+import use_case.create_chat.UserDataAccess;
 import use_case.friend_manager.add_friend.AddFriendUserDataAccessInterface;
 import use_case.chat.ChatDataAccessInterface;
 import use_case.friend_manager.delete_friend.DeleteFriendUserDataAccessInterface;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class FileUserDataAccessObject implements AddFriendUserDataAccessInterface,
         DeleteFriendUserDataAccessInterface, LoginUserDataAccessInterface,
-        SignupUserDataAccessInterface {
+        SignupUserDataAccessInterface, UserDataAccess {
 
     private final File csvUserFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();

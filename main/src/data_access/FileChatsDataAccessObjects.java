@@ -5,13 +5,14 @@ import entity.ChatFactory;
 import entity.User;
 import entity.UserFactory;
 import use_case.chat.ChatDataAccessInterface;
+import use_case.create_chat.CreateChatDataAccess;
 import use_case.send_message.MessageDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class FileChatsDataAccessObjects implements ChatDataAccessInterface, MessageDataAccessInterface {
+public class FileChatsDataAccessObjects implements ChatDataAccessInterface, MessageDataAccessInterface, CreateChatDataAccess {
     private final File csvChatFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
     private final Map<String, Chat> chats = new LinkedHashMap<>();
@@ -43,7 +44,7 @@ public class FileChatsDataAccessObjects implements ChatDataAccessInterface, Mess
                     String chatName = String.valueOf(col[headers.get("Chat_Name")]);
 
                     String[] listMembers = col[headers.get("Members")].split("/");
-                    String[] listMessages = col[headers.get("Messages")].split("/");
+                    String[] listMessages = col[headers.get("Chat_History")].split("/");
 
                     ArrayList<String> members = new ArrayList<String>(Arrays.asList(listMembers));
 
@@ -104,5 +105,15 @@ public class FileChatsDataAccessObjects implements ChatDataAccessInterface, Mess
         } else {
             return false;
         }
+    }
+
+    public String getLast() {
+        Set<String> keys = chats.keySet();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        for (String key: keys) {
+            Integer id = Integer.parseInt(key);
+            ids.add(id);
+        }
+        return Collections.max(ids).toString();
     }
 }
