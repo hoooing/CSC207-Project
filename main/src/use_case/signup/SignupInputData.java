@@ -19,7 +19,7 @@ public class SignupInputData {
         return password;
     }
 
-    public String getRepeatPassword() {
+    String getRepeatPassword() {
         return repeatPassword;
     }
 }
