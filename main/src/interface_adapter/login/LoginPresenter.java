@@ -3,27 +3,30 @@ package interface_adapter.login;
 import interface_adapter.home_screen.HomeState;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.ViewManagerModel;
-import interface_adapter.signup.SignupState;
+import interface_adapter.home_screen.HomeViewModelBuilder;
 import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginOutputData;
-import use_case.signup.SignupOutputData;
+
 public class LoginPresenter implements LoginOutputBoundary {
     private final LoginViewModel loginViewModel;
+
+    private final HomeViewModelBuilder homeViewModelBuilder;
     private final HomeViewModel homeViewModel;
     private ViewManagerModel viewManagerModel;
 
     public LoginPresenter(ViewManagerModel viewManagerModel,
                           HomeViewModel homeViewModel,
-                          LoginViewModel loginViewModel) {
+                          LoginViewModel loginViewModel, HomeViewModelBuilder homeViewModelBuilder) {
         this.viewManagerModel = viewManagerModel;
         this.homeViewModel = homeViewModel;
         this.loginViewModel = loginViewModel;
+        this.homeViewModelBuilder = homeViewModelBuilder;
     }
 
     @Override
-    public void prepareSuccessView(LoginOutputData response) {
+    public void prepareSuccessView(LoginOutputData user) {
         // On success, switch to the home view.
-        //  todo: Complete logged in Home page
+        homeViewModelBuilder.build(user.getUser());
 
         HomeState homeState = homeViewModel.getState();
         this.homeViewModel.setState(homeState);

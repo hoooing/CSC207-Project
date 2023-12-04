@@ -13,5 +13,9 @@ public interface User {
 
     ArrayList<User> getFriends();
 
+    void addChat(Chat chat);
+
+    ArrayList<Chat> getChats();
+
     void addFriend(User friend);
 }
