@@ -23,24 +23,10 @@ This is a screenshot of trying out the Virgil E3Kit API.
 <img width="700" alt="decryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/0d22d20f-0c63-492d-a334-62ca190502ce">
 (This is an example of decrypting data)
 
-![Screenshot 2023-12-04 at 12 01 48 PM](https://github.com/hoooing/CSC207-Project/assets/120237038/95e62194-ecc5-4e97-9b01-f7d75dc0ff4a)
-(This is a picture of Random Word API Endpoint)
+![recoveryphrase_example](https://github.com/hoooing/CSC207-Project/assets/88988698/4e9d7ab3-15db-439b-8eea-0c8050e553a0)
+(This is an example of generating a recovery phrase consisting of 12 randomly generated words from the API dictionary)
+Example Output: Recovery Phrase: "argentous" "mummichog" "melancholiacs" "chinchiest" "preceptor" "shortcuts" "ascendent" "melancholiacs" "preordain" "cytoskeleton" "argentous" "spiffing"
 
-Endpoint for Random word API: 'https://random-word-api.herokuapp.com/word?number=10' \
-Base URL: 'https://random-word-api.herokuapp.com/' \
-Endpoint/Path: '/word' \
-Query Parameter: '?number=10' \
-__/all__ \
-Return all stored words. \
-Example: https://random-word-api.herokuapp.com/all 
-
-__/word__ \
-Return one stored word randomly. \
-Example: https://random-word-api.herokuapp.com/word
-
-__/languages__ \
-Return a list of stored language codes. \
-Example: https://random-word-api.herokuapp.com/languages
 
 # Technical Problems
 TBA
