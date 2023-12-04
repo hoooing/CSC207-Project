@@ -1,11 +1,23 @@
 package interface_adapter.home_screen;
 
+import entity.Chat;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 public class HomeState {
     private String username = "";
 
-    public HomeState(HomeState copy) {this.username = copy.username;}
+    private ArrayList<String[]> chats = new ArrayList<>();
 
-    public HomeState() {}
+
+    public HomeState(HomeState copy) {
+        this.username = copy.username;
+        this.chats = copy.chats;
+    }
+
+    public HomeState(){}
 
     public String getUsername() {
         return username;
@@ -13,5 +25,26 @@ public class HomeState {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void addChat(Chat chat) {
+        String[] chatPair = {chat.getChatID(), chat.getChatName()};
+        chats.add(chatPair);
+    }
+
+    public ArrayList<String> getChatNames() {
+        ArrayList<String> chatNames = new ArrayList<>();
+        for (String[] chat: chats) {
+            chatNames.add(chat[1]);
+        }
+        return chatNames;
+    }
+
+    public ArrayList<String[]> getChats() {
+        return chats;
+    }
+
+    public void setChats(ArrayList<String[]> chats) {
+        this.chats = chats;
     }
 }

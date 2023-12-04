@@ -19,6 +19,8 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
     private final SignupViewModel signupViewModel;
 
+
+
     private final SwitchController switchController;
 
     private final JTextField usernameInputField = new JTextField(15);
@@ -155,6 +157,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     // todo: switch to login
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource().equals(cancel)) {
+
             switchController.execute("login");
         }
     }
