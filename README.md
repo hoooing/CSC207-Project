@@ -14,6 +14,18 @@ Our project is to create an application providing an End-to-End Encrypted messag
 * [Virgil E3Kit](https://developer.virgilsecurity.com/docs/e3kit): This API will be responsible for encryption/decryption methods.
 * [Random word API](https://random-word-api.herokuapp.com/home): This API will be responsible for giving random words to generate recovery phrase.
 
+# Sample Usage of the APIs
+This is a screenshot of trying out the Virgil E3Kit API.
+
+<img width="700" alt="encryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/cf30da34-4bfa-4011-909a-0bf70cba1258">
+(This is an example of encrypting data)
+
+<img width="700" alt="decryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/0d22d20f-0c63-492d-a334-62ca190502ce">
+(This is an example of decrypting data)
+
+![Screenshot 2023-12-04 at 12 01 48 PM](https://github.com/hoooing/CSC207-Project/assets/120237038/95e62194-ecc5-4e97-9b01-f7d75dc0ff4a)
+(This is a picture of Random Word API Endpoint)
+
 Endpoint for Random word API: 'https://random-word-api.herokuapp.com/word?number=10' \
 Base URL: 'https://random-word-api.herokuapp.com/' \
 Endpoint/Path: '/word' \
@@ -29,18 +41,6 @@ Example: https://random-word-api.herokuapp.com/word
 __/languages__ \
 Return a list of stored language codes. \
 Example: https://random-word-api.herokuapp.com/languages
-
-# Sample Usage of the APIs
-This is a screenshot of trying out the Virgil E3Kit API.
-
-<img width="700" alt="encryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/cf30da34-4bfa-4011-909a-0bf70cba1258">
-(This is an example of encrypting data)
-
-<img width="700" alt="decryption_example" src="https://github.com/hoooing/CSC207-Project/assets/88988698/0d22d20f-0c63-492d-a334-62ca190502ce">
-(This is an example of decrypting data)
-
-![Screenshot 2023-12-04 at 12 01 48 PM](https://github.com/hoooing/CSC207-Project/assets/120237038/95e62194-ecc5-4e97-9b01-f7d75dc0ff4a)
-(This is a picture of Random Word API Endpoint)
 
 # Technical Problems
 TBA
