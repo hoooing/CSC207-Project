@@ -6,7 +6,6 @@ import use_case.add_friend.AddFriendOutputData;
 public class AddFriendPresenter implements AddFriendOutputBoundary {
 
     private final AddFriendViewModel addFriendViewModel;
-//    private
 
     public AddFriendPresenter(AddFriendViewModel viewModel) {
         this.addFriendViewModel = viewModel;

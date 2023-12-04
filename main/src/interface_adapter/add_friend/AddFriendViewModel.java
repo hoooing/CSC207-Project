@@ -10,7 +10,7 @@ public class AddFriendViewModel extends ViewModel {
 
     public static final String TITLE_LABEL = "Add Friend View";
     public static final String USERNAME_LABEL = "Type Username you want to add to your friend.";
-    public static final String SIGNUP_BUTTON_LABEL = "Add Friend";
+    public static final String ADD_FRIEND_BUTTON_LABEL = "Add Friend";
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
 //    private SignupState state = new SignupState();
