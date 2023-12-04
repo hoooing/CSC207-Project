@@ -1,7 +1,7 @@
-package interface_adapter.add_friend;
+package interface_adapter.friend_manager.add_friend;
 
-import use_case.add_friend.AddFriendOutputBoundary;
-import use_case.add_friend.AddFriendOutputData;
+import use_case.friend_manager.add_friend.AddFriendOutputBoundary;
+import use_case.friend_manager.add_friend.AddFriendOutputData;
 
 public class AddFriendPresenter implements AddFriendOutputBoundary {
 

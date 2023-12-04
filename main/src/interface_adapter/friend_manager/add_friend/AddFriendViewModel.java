@@ -1,7 +1,6 @@
-package interface_adapter.add_friend;
+package interface_adapter.friend_manager.add_friend;
 
 import interface_adapter.ViewModel;
-import interface_adapter.signup.SignupState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

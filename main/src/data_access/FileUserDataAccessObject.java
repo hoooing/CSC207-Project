@@ -3,9 +3,9 @@ package data_access;
 import entity.Chat;
 import entity.User;
 import entity.UserFactory;
-import use_case.add_friend.AddFriendUserDataAccessInterface;
+import use_case.friend_manager.add_friend.AddFriendUserDataAccessInterface;
 import use_case.chat.ChatDataAccessInterface;
-import use_case.delete_friend.DeleteFriendUserDataAccessInterface;
+import use_case.friend_manager.delete_friend.DeleteFriendUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 

@@ -1,4 +1,4 @@
-package use_case.delete_friend;
+package use_case.friend_manager.delete_friend;
 
 public interface DeleteFriendOutputBoundary {
 

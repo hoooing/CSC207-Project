@@ -1,7 +1,6 @@
-package interface_adapter.delete_friend;
+package interface_adapter.friend_manager.delete_friend;
 
 import interface_adapter.ViewModel;
-import interface_adapter.add_friend.AddFriendState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

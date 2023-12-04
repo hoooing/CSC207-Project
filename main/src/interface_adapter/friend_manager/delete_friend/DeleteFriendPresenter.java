@@ -1,10 +1,7 @@
-package interface_adapter.delete_friend;
+package interface_adapter.friend_manager.delete_friend;
 
-import interface_adapter.add_friend.AddFriendState;
-import interface_adapter.add_friend.AddFriendViewModel;
-import use_case.add_friend.AddFriendOutputData;
-import use_case.delete_friend.DeleteFriendOutputBoundary;
-import use_case.delete_friend.DeleteFriendOutputData;
+import use_case.friend_manager.delete_friend.DeleteFriendOutputBoundary;
+import use_case.friend_manager.delete_friend.DeleteFriendOutputData;
 
 public class DeleteFriendPresenter implements DeleteFriendOutputBoundary {
 

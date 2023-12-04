@@ -1,6 +1,5 @@
-package use_case.add_friend;
+package use_case.friend_manager.add_friend;
 
-import entity.CommonUser;
 import entity.User;
 
 import java.time.LocalDateTime;

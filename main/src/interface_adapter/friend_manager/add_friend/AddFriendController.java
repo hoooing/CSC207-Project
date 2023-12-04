@@ -1,7 +1,7 @@
-package interface_adapter.add_friend;
+package interface_adapter.friend_manager.add_friend;
 
-import use_case.add_friend.AddFriendInputBoundary;
-import use_case.add_friend.AddFriendInputData;
+import use_case.friend_manager.add_friend.AddFriendInputBoundary;
+import use_case.friend_manager.add_friend.AddFriendInputData;
 
 public class AddFriendController {
     final AddFriendInputBoundary userAddFriendUseCaseInteractor;

@@ -1,7 +1,7 @@
-package interface_adapter.delete_friend;
+package interface_adapter.friend_manager.delete_friend;
 
-import use_case.delete_friend.DeleteFriendInputBoundary;
-import use_case.delete_friend.DeleteFriendInputData;
+import use_case.friend_manager.delete_friend.DeleteFriendInputBoundary;
+import use_case.friend_manager.delete_friend.DeleteFriendInputData;
 
 public class DeleteFriendController {
 

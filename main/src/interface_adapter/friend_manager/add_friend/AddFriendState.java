@@ -1,18 +1,16 @@
-package interface_adapter.delete_friend;
+package interface_adapter.friend_manager.add_friend;
 
-import interface_adapter.add_friend.AddFriendState;
-
-public class DeleteFriendState {
+public class AddFriendState {
 
     private String message = "";
     private String messageError = null;
 
-    public DeleteFriendState(DeleteFriendState copy) {
+    public AddFriendState(AddFriendState copy) {
         this.message = copy.message;
         this.messageError = copy.messageError;
     }
 
-    public DeleteFriendState() {}
+    public AddFriendState() {}
 
     public String getMessage() {
         return message;
