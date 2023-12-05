@@ -112,7 +112,7 @@ public class AddFriendView extends JPanel implements ActionListener, PropertyCha
                 if (e.getSource().equals(create_chat)) {
                     String friend = addFriendViewModel.getState().getFriend();
                     String user = addFriendViewModel.getState().getUsername();
-                    String chatName = friend + "and" + user + " chat ";
+                    String chatName = friend + "and" + user + "chat";
                     createChatController.execute(chatName, new ArrayList<String>(List.of(new String[]{user, friend})));
                 }
             }

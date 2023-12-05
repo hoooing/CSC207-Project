@@ -19,9 +19,12 @@ public class SendMessagePresenter implements MessageOutputBoundary {
 
     @Override
     public void prepareSuccessView(String message) {
+        System.out.println("here");
         ChatState chatState = chatViewModel.getState();
+        System.out.println(message);
         chatState.addMessage(message);
         chatViewModel.firePropertyChanged();
+        System.out.println("changing");
 
     }
 

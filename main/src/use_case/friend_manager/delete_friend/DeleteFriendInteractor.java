@@ -20,10 +20,10 @@ public class DeleteFriendInteractor implements DeleteFriendInputBoundary {
         User userToAdd = userDataAccessInterface.get(deleteFriendInputData.getFriendUsername());
         if (!userDataAccessInterface.existsByName(deleteFriendInputData.getFriendUsername())) {
             userPresenter.prepareFailView("User does not exist! Please check the username that you want to delete!");
-        } else if (!user.getFriends().contains(userToAdd)) {
+        } else if (!user.getFriends().contains(userToAdd.getUserName())) {
             userPresenter.prepareFailView("User does not exist in your friend list.");
         } else {
-            user.addFriend(userToAdd);
+            user.addFriend(userToAdd.getUserName());
             DeleteFriendOutputData outputData = new DeleteFriendOutputData(true, userToAdd.getUserName());
             userPresenter.prepareSuccessView(outputData);
         }

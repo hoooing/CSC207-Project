@@ -75,7 +75,7 @@ public class Main {
 
 
 // for testing views
-        viewManagerModel.setActiveView(homeView.viewName);
+        viewManagerModel.setActiveView(loginView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();

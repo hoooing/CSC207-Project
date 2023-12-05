@@ -10,9 +10,9 @@ public class CommonUser implements User {
     private final LocalDateTime creationTime;
 
     private ArrayList<Chat> chats;
-    private ArrayList<User> friends;
+    private ArrayList<String> friends;
 
-    CommonUser(String userName, String password, LocalDateTime creationTime, ArrayList<User> friends, ArrayList<Chat> chats){
+    CommonUser(String userName, String password, LocalDateTime creationTime, ArrayList<String> friends, ArrayList<Chat> chats){
         // todo: update userfactory
         this.userName = userName;
         this.password = password;
@@ -33,7 +33,7 @@ public class CommonUser implements User {
     @Override
     public LocalDateTime getCreationDate() {return creationTime;}
 
-    public ArrayList<User> getFriends() {return friends;}
+    public ArrayList<String> getFriends() {return friends;}
 
     @Override
     public void addChat(Chat chat) {
@@ -49,5 +49,5 @@ public class CommonUser implements User {
     }
 
     @Override
-    public void addFriend(User friend) {this.friends.add(friend);}
+    public void addFriend(String friend) {this.friends.add(friend);}
 }

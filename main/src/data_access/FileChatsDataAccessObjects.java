@@ -85,8 +85,6 @@ public class FileChatsDataAccessObjects implements ChatDataAccessInterface, Mess
 
     @Override
     public Chat getChat(String chatID) {
-        // code to test chatview
-        // todo: delete after complete
         return chats.get(chatID);
     }
 
@@ -114,6 +112,7 @@ public class FileChatsDataAccessObjects implements ChatDataAccessInterface, Mess
             Integer id = Integer.parseInt(key);
             ids.add(id);
         }
-        return Collections.max(ids).toString();
+        Integer result = Integer.valueOf(Collections.max(ids).intValue() + 1);
+        return result.toString();
     }
 }

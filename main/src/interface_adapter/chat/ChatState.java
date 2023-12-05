@@ -16,14 +16,6 @@ public class ChatState {
 
     ArrayList<String> messages = new ArrayList<>();
 
-    public String getChatName() {
-        return chatName;
-    }
-
-    public void setChatName(String chatName) {
-        this.chatName = chatName;
-    }
-
     public ChatState(ChatState copy) {
         this.chatID = copy.chatID;
         this.messageError = copy.messageError;
@@ -81,5 +73,12 @@ public class ChatState {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    public String getChatName() {
+        return chatName;
+    }
+
+    public void setChatName(String chatName) {
+        this.chatName = chatName;
     }
 }

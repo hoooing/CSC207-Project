@@ -18,7 +18,7 @@ public class HomeViewModel extends ViewModel {
 
     public final String LOGOUT_BUTTON_LABEL = "Logout";
 
-    private HomeState homeState;
+    private HomeState homeState = new HomeState();
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

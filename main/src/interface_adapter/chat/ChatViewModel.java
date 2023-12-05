@@ -14,14 +14,13 @@ public class ChatViewModel extends ViewModel {
     public final String SEND = "send";
 
 
-    public ChatState chatState;
+    public ChatState chatState = new ChatState();
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
 
     public ChatViewModel() {
         super("chat");
-        this.chatState = new ChatState();
     }
 
     public ChatState getState() {

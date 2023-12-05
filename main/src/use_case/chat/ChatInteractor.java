@@ -25,7 +25,8 @@ public class ChatInteractor implements ChatInputBoundary {
         ArrayList<String> members  = chat.getMembers();
         ArrayList<String> messages = chat.getChatHistory();
 
-        ChatOutputData chatOutputData = new ChatOutputData(name, id, members, messages, username);
+
+        ChatOutputData chatOutputData = new ChatOutputData(id, name, members, messages, username);
         chatPresenter.prepareView(chatOutputData);
     }
 }

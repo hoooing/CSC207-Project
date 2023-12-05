@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class CommonUserFactory implements UserFactory {
 
     @Override
-    public User createUser(String userName, String password, LocalDateTime creationTime, ArrayList<User> friends,  ArrayList<Chat> chats) {
+    public User createUser(String userName, String password, LocalDateTime creationTime, ArrayList<String> friends,  ArrayList<Chat> chats) {
         return new CommonUser(userName, password, creationTime, friends, chats);
     }
 }

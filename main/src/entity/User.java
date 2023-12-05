@@ -11,11 +11,11 @@ public interface User {
 
     LocalDateTime getCreationDate();
 
-    ArrayList<User> getFriends();
+    ArrayList<String> getFriends();
 
     void addChat(Chat chat);
 
     ArrayList<Chat> getChats();
 
-    void addFriend(User friend);
+    void addFriend(String friend);
 }

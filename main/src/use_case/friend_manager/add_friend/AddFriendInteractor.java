@@ -27,8 +27,8 @@ public class AddFriendInteractor implements AddFriendInputBoundary{
             if (user.getFriends().contains(userToAdd)){
                 userPresenter.prepareFailView("User already exists in your friend list!");
             } else {
-                user.addFriend(userToAdd);
-                userToAdd.addFriend(user);
+                user.addFriend(userToAdd.getUserName());
+                userToAdd.addFriend(user.getUserName());
 
                 userDataAccessInterface.save(user);
                 userDataAccessInterface.save(userToAdd);

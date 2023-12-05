@@ -73,12 +73,14 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(send)) {
+                            String text = message.getText();
                             ChatState currentState = chatViewModel.getState();
                             String chatID = currentState.getChatID();
                             String sender = currentState.getUsername();
                             LocalDateTime timeStamp = LocalDateTime.now();
 
-                            sendMesageController.execute(message.getText(), chatID, sender, timeStamp);
+                            message.setText("");
+                            sendMesageController.execute(text, chatID, sender, timeStamp);
                         }
                     }
                 }
@@ -123,7 +125,6 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
         for (String message: state.getMessages()) {
             stringBuilder.append(message).append("\n");
         }
-
         textArea.setText(stringBuilder.toString());
     }
 }

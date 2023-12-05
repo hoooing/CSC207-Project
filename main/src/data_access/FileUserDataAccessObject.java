@@ -15,6 +15,7 @@ import use_case.signup.SignupUserDataAccessInterface;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -66,20 +67,17 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
                     String[] listFriends = col[headers.get("Friends")].split("/");
                     String[] chatIDs = col[headers.get("Chats")].split("/");
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                    ArrayList<User> friends = new ArrayList<>();
-                    for (String friendName: listFriends) {
-                        User friend = this.get(friendName);
-                        friends.add(friend);
-                    }
+                    ArrayList<String> friends = new ArrayList<>();
+                    friends.addAll(Arrays.asList(listFriends));
 
-                    ArrayList<Chat> chats = new ArrayList<>();
+                    ArrayList<Chat> newChats = new ArrayList<>();
 
                     for (String chatID: chatIDs) {
                         Chat chat = chatsDataAccessObjects.getChat(chatID);
-                        chats.add(chat);
+                        newChats.add(chat);
                     }
 
-                    User user = userFactory.createUser(username, password, ldt, friends, chats);
+                    User user = userFactory.createUser(username, password, ldt, friends, newChats);
                     accounts.put(username, user);
                 }
             }
@@ -95,9 +93,7 @@ public class FileUserDataAccessObject implements AddFriendUserDataAccessInterfac
 
             for (User user : accounts.values()) {
                 ArrayList<String> friends = new ArrayList<>();
-                for (User friend: user.getFriends()) {
-                    friends.add(friend.getUserName());
-                }
+                friends.addAll(user.getFriends());
 
                 String listFriend = String.join("/", friends);
                 /*

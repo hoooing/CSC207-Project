@@ -57,6 +57,7 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
         this.chatController = chatController;
         this.addFriendViewModel = addFriendViewModel;
         this.viewManagerModel = viewManagerModel;
+        this.homeViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Home");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -66,15 +67,6 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
         chatButtonPanel.setLayout(new BoxLayout(chatButtonPanel, BoxLayout.Y_AXIS));
 
         // Add buttons to the panel (you can replace this loop with your logic to create buttons dynamically)
-        // todo: delete after testing
-        ArrayList<String[]> toAdd = homeViewModel.getState().getChats();
-        for (String[] chatPair: toAdd) {
-            JButton button = new JButton(chatPair[1]);
-            button.setAlignmentX(Component.CENTER_ALIGNMENT);
-            button.addActionListener(new ButtonClickListener());
-            chatButtonPanel.add(button);
-            buttonLog.put(button, chatPair[0]);
-        }
 
         //todo: add rest of action listeners
         JPanel upperButtons = new JPanel();
@@ -118,7 +110,8 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
         @Override
         public void actionPerformed(ActionEvent e) {
             String chatName = e.getActionCommand();
-            String chatId = buttonLog.get(e);
+            String chatId = buttonLog.get(e.getSource());
+            System.out.println(chatId);
             chatController.execute(chatName, chatId, homeViewModel.getState().getUsername());
         }
     }
@@ -130,7 +123,7 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         HomeState state = (HomeState) evt.getNewValue();
-        ArrayList<String[]> toAdd = homeViewModel.getState().getChats();
+        ArrayList<String[]> toAdd = state.getChats();
         for (String[] chatPair: toAdd) {
             JButton button = new JButton(chatPair[1]);
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -138,6 +131,7 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
             chatButtonPanel.add(button);
             buttonLog.put(button, chatPair[0]);
         }
+        chats.add(chatButtonPanel);
     }
 
 }
