@@ -1,4 +1,4 @@
 Username,Password,Creation_Time,Friends,Chats
-test1,test1,2023-12-04T17:47:57.831600800,test2,1/2
-test2,test2,2023-12-04T17:47:57.831600800,test1,2
-test3,test3,2023-12-04T18:00:19.039918600,test3/test3,1
+test1,test1,2023-12-04T17:47:57.831600800,test2,1
+test2,test2,2023-12-04T17:47:57.831600800,test1,1/2
+test3,test3,2023-12-04T20:32:25.515491600,test3/test3,2

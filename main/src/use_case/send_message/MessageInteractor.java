@@ -21,7 +21,7 @@ public class MessageInteractor implements MessageInputBoundary{
         LocalDateTime timeStamp = messageInputData.getTimeStamp().truncatedTo(ChronoUnit.MINUTES);
         String newMessage = message + "\n" + "Sent by " + sender + " at " +
                 timeStamp;
-        if (messageDataAccessInterface.saveMessage(newMessage, chatId)) {
+        if (messageDataAccessInterface.saveMessage(message, chatId)) {
             messageOutputBoundary.prepareSuccessView(newMessage);
         }
         else {
