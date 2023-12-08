@@ -50,4 +50,19 @@ public class CommonUser implements User {
 
     @Override
     public void addFriend(User friend) {this.friends.add(friend);}
+
+    @Override
+    public void setPassword(String newPassword) {
+
+    }
+
+    @Override
+    public void setEmail(String newEmail) {
+
+    }
+
+    @Override
+    public void setProfilePicture(String profilePicture) {
+
+    }
 }
