@@ -18,4 +18,10 @@ public interface User {
     ArrayList<Chat> getChats();
 
     void addFriend(String friend);
+
+    void setPassword(String newPassword);
+
+    void setEmail(String newEmail);
+
+    void setProfilePicture(String profilePicture);
 }
