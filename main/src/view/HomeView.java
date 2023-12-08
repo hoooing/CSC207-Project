@@ -10,6 +10,7 @@ import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeState;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginState;
+import interface_adapter.switch_view.SwitchController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -103,6 +104,16 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
                                      }
         );
 
+        close.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(close)) {
+                            switchController.execute("close");
+                        }
+                    }
+                }
+        );
+
 
 
     }
@@ -115,9 +126,14 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
             chatController.execute(chatName, chatId, homeViewModel.getState().getUsername());
         }
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(close)) {
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        }
     }
 
     @Override

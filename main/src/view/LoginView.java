@@ -60,6 +60,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         signup = new JButton(loginViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signup);
         close = new JButton(loginViewModel.CLOSE_BUTTON_LABEL);
+        buttons.add(close);
 
         logIn.addActionListener(
                 new ActionListener() {
@@ -86,6 +87,17 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                     }
                 }
         );
+
+        close.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(close)) {
+                            switchController.execute("close");
+                        }
+                    }
+                }
+        );
+
         usernameInputField.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -132,7 +144,10 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(close)) {
-            System.exit(0);
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }
     }
     @Override
