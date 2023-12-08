@@ -6,7 +6,7 @@ import interface_adapter.chat.ChatState;
 import interface_adapter.chat.ChatViewModel;
 import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.login.LoginState;
-import interface_adapter.send_message.SendMesageController;
+import interface_adapter.send_message.SendMessageController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,12 +41,12 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final ChatViewModel chatViewModel;
 
-    private final SendMesageController sendMesageController;
+    private final SendMessageController sendMessageController;
 
 
-    public ChatView(ChatViewModel chatViewModel, SendMesageController sendMesageController) {
+    public ChatView(ChatViewModel chatViewModel, SendMessageController sendMesageController) {
         this.chatViewModel =chatViewModel;
-        this.sendMesageController = sendMesageController;
+        this.sendMessageController = sendMesageController;
         this.chatViewModel.addPropertyChangeListener(this);
 
 

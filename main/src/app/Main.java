@@ -24,7 +24,6 @@ public class Main {
 
         // The main application window.
         JFrame application = new JFrame("N2NChat");
-        application.setBounds(100, 100, 400, 500);
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         CardLayout cardLayout = new CardLayout();
@@ -71,7 +70,6 @@ public class Main {
         AddFriendView addFriendView = AddFriendUseCaseFactory.create(addFriendViewModel,
                 homeViewModel, viewManagerModel, userDataAccessObject, createChatController);
         views.add(addFriendView, addFriendView.viewName);
-
 
 
 // for testing views

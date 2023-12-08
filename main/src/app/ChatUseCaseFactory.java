@@ -6,7 +6,7 @@ import interface_adapter.chat.ChatPresenter;
 import interface_adapter.chat.ChatViewModel;
 import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeViewModel;
-import interface_adapter.send_message.SendMesageController;
+import interface_adapter.send_message.SendMessageController;
 import interface_adapter.send_message.SendMessagePresenter;
 import use_case.chat.ChatDataAccessInterface;
 import use_case.chat.ChatInputBoundary;
@@ -28,8 +28,8 @@ public class ChatUseCaseFactory {
 
     public static ChatView create(ChatViewModel chatViewModel, MessageDataAccessInterface messageDataAccessInterface) {
         try {
-            SendMesageController sendMesageController = createMessageController(chatViewModel, messageDataAccessInterface );
-            return new ChatView(chatViewModel, sendMesageController);
+            SendMessageController sendMessageController = createMessageController(chatViewModel, messageDataAccessInterface );
+            return new ChatView(chatViewModel, sendMessageController);
         } catch (IOException e) {
             //todo: update
             JOptionPane.showMessageDialog(null, "Could not open chat data file.");
@@ -38,7 +38,7 @@ public class ChatUseCaseFactory {
         return null;
     }
 
-    private static SendMesageController createMessageController(ChatViewModel chatViewModel, MessageDataAccessInterface messageDataAccessInterface)
+    private static SendMessageController createMessageController(ChatViewModel chatViewModel, MessageDataAccessInterface messageDataAccessInterface)
             throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
@@ -47,6 +47,6 @@ public class ChatUseCaseFactory {
 
         MessageInputBoundary messageInteractor = new MessageInteractor(messageDataAccessInterface, messagePresenter);
 
-        return new SendMesageController(messageInteractor);
+        return new SendMessageController(messageInteractor);
     }
 }

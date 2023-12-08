@@ -5,10 +5,10 @@ import use_case.send_message.MessageInputData;
 
 import java.time.LocalDateTime;
 
-public class SendMesageController {
+public class SendMessageController {
     final MessageInputBoundary messageInteractor;
 
-    public SendMesageController(MessageInputBoundary messageInteractor) {
+    public SendMessageController(MessageInputBoundary messageInteractor) {
         this.messageInteractor = messageInteractor;
     }
 
