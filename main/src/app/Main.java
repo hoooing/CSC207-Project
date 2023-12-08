@@ -61,7 +61,7 @@ public class Main {
         views.add(signupView, signupView.viewName);
 
         HomeView homeView = HomeViewFactory.create(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessObject
-        , addFriendViewModel);
+                , addFriendViewModel, switchController);
         views.add(homeView, homeView.viewName);
 
         ChatView chatView = ChatUseCaseFactory.create(chatViewModel, chatDataAccessObject);
@@ -81,3 +81,6 @@ public class Main {
 
     }
 }
+
+
+

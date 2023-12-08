@@ -34,12 +34,13 @@ public class HomeViewFactory {
             ViewManagerModel viewManagerModel,
             ChatViewModel chatViewModel,
             ChatDataAccessInterface chatDataAccessInterface,
-            AddFriendViewModel addFriendViewModel
-            ) {
+            AddFriendViewModel addFriendViewModel,
+            SwitchController switchController
+    ) {
 
         try {
             ChatController chatController = createChatUseCase(homeViewModel, viewManagerModel, chatViewModel, chatDataAccessInterface);
-            return new HomeView(homeViewModel, chatController, addFriendViewModel, viewManagerModel);
+            return new HomeView(homeViewModel, chatController, addFriendViewModel, viewManagerModel, switchController);
         } catch (IOException e) {
             //todo: update
             JOptionPane.showMessageDialog(null, "Could not open user data file.");

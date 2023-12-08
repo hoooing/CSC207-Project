@@ -51,14 +51,17 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final ViewManagerModel viewManagerModel;
 
+    private final SwitchController switchController;
+
     public HomeView(HomeViewModel homeViewModel,  ChatController chatController, AddFriendViewModel addFriendViewModel,
-                    ViewManagerModel viewManagerModel) {
+                    ViewManagerModel viewManagerModel, SwitchController switchController) {
 
         this.homeViewModel = homeViewModel;
         this.chatController = chatController;
         this.addFriendViewModel = addFriendViewModel;
         this.viewManagerModel = viewManagerModel;
         this.homeViewModel.addPropertyChangeListener(this);
+        this.switchController = switchController;
 
         JLabel title = new JLabel("Home");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -129,7 +132,10 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(close)) {
-            System.exit(0);
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }
     }
 

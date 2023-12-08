@@ -55,11 +55,12 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                 new JLabel("Password"), passwordInputField);
 
         JPanel buttons = new JPanel();
-        logIn = new JButton(loginViewModel.LOGIN_BUTTON_LABEL);
+        logIn = new JButton(LoginViewModel.LOGIN_BUTTON_LABEL);
         buttons.add(logIn);
-        signup = new JButton(loginViewModel.SIGNUP_BUTTON_LABEL);
+        signup = new JButton(LoginViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signup);
-        close = new JButton(loginViewModel.CLOSE_BUTTON_LABEL);
+        close = new JButton(LoginViewModel.CLOSE_BUTTON_LABEL);
+        buttons.add(close);
 
         logIn.addActionListener(
                 new ActionListener() {
@@ -86,6 +87,17 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                     }
                 }
         );
+
+        close.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(close)) {
+                            switchController.execute("close");
+                        }
+                    }
+                }
+        );
+
         usernameInputField.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -132,7 +144,10 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(close)) {
-            System.exit(0);
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }
     }
     @Override
