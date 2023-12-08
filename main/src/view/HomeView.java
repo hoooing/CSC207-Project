@@ -10,6 +10,7 @@ import interface_adapter.friend_manager.add_friend.AddFriendViewModel;
 import interface_adapter.home_screen.HomeState;
 import interface_adapter.home_screen.HomeViewModel;
 import interface_adapter.login.LoginState;
+import interface_adapter.switch_view.SwitchController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,19 +28,19 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
     private JLabel title;
 
-    private JScrollPane chats;
+    private final JScrollPane chats;
 
-    private  JButton logout;
+    private final JButton logout;
 
-    private JButton addFriend;
+    private final JButton addFriend;
 
-    private JButton close;
+    private final JButton close;
 
-    private JButton newMessages;
+    private final JButton newMessages;
 
-    private JPanel chatButtonPanel;
+    private final JPanel chatButtonPanel;
 
-    private Map<JButton, String> buttonLog = new HashMap<>();
+    private final Map<JButton, String> buttonLog = new HashMap<>();
 
     private final HomeViewModel homeViewModel;
 
@@ -70,10 +71,10 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
 
         //todo: add rest of action listeners
         JPanel upperButtons = new JPanel();
-        close = new JButton(homeViewModel.CLOSE_BUTTON_LABEL);
+        close = new JButton(HomeViewModel.CLOSE_BUTTON_LABEL);
         logout = new JButton(homeViewModel.LOGOUT_BUTTON_LABEL);
         addFriend = new JButton(homeViewModel.ADD_FRIEND_BUTTON_LABEL);
-        newMessages = new JButton(homeViewModel.NEW_MESSAGE_BUTTON_LABEL);
+        newMessages = new JButton(HomeViewModel.NEW_MESSAGE_BUTTON_LABEL);
 
         upperButtons.add(addFriend);
         upperButtons.add(newMessages);
@@ -103,6 +104,16 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
                                      }
         );
 
+        close.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(close)) {
+                            switchController.execute("close");
+                        }
+                    }
+                }
+        );
+
 
 
     }
@@ -115,9 +126,11 @@ public class HomeView extends JPanel implements ActionListener, PropertyChangeLi
             chatController.execute(chatName, chatId, homeViewModel.getState().getUsername());
         }
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(close)) {
+            System.exit(0);
+        }
     }
 
     @Override
